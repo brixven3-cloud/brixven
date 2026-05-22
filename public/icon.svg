@@ -1,0 +1,10 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Charcoal background -->
+  <rect width="40" height="40" rx="4" fill="#1C1C1C"/>
+  <!-- B: left stem — white -->
+  <rect x="10" y="9" width="5" height="22" rx="1" fill="white"/>
+  <!-- B: top bump — white -->
+  <rect x="13" y="9" width="11" height="10" rx="5" fill="white"/>
+  <!-- B: bottom bump — gold -->
+  <rect x="13" y="21" width="13" height="10" rx="5" fill="#C9A96E"/>
+</svg>
