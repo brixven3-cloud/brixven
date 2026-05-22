@@ -14,17 +14,17 @@
     "next": "^16.2.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "resend": "^6.12.3"
-  },
-  "devDependencies": {
+    "resend": "^6.12.3",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "typescript": "^5",
     "@types/node": "^22",
     "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "autoprefixer": "^10.4.21",
+    "@types/react-dom": "^19"
+  },
+  "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "^16.2.6",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "eslint-config-next": "^16.2.6"
   }
 }
