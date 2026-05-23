@@ -4,81 +4,158 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 function PuzzleCube() {
-  const faces = [
-    { name: 'front',  transform: 'rotateY(0deg)   translateZ(120px)' },
-    { name: 'back',   transform: 'rotateY(180deg)  translateZ(120px)' },
-    { name: 'right',  transform: 'rotateY(90deg)   translateZ(120px)' },
-    { name: 'left',   transform: 'rotateY(-90deg)  translateZ(120px)' },
-    { name: 'top',    transform: 'rotateX(90deg)   translateZ(120px)' },
-    { name: 'bottom', transform: 'rotateX(-90deg)  translateZ(120px)' },
-  ]
+  const S = 300
+  const H = S / 2
 
-  const faceStyles: Record<string, React.CSSProperties> = {
-    front:  { background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)' },
-    back:   { background: 'linear-gradient(135deg, #111111 0%, #0a0a0a 100%)' },
-    right:  { background: 'linear-gradient(135deg, #222222 0%, #111111 100%)' },
-    left:   { background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)' },
-    top:    { background: 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)' },
-    bottom: { background: 'linear-gradient(135deg, #0d0d0d 0%, #050505 100%)' },
+  type CellDef = { bg: string; dots?: boolean; shimmer?: boolean }
+  type FaceDef = {
+    transform: string
+    border: string
+    shadow?: string
+    cells: CellDef[]
   }
 
-  const Cell = ({ dotted }: { dotted?: boolean }) => (
-    <div style={{
-      border: '1px solid #2a2a2a',
-      borderRadius: 2,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-      {dotted && (
-        <div style={{
-          width: 4, height: 4,
-          borderRadius: '50%',
-          background: '#3a3a3a',
-        }} />
-      )}
-    </div>
-  )
+  const dot = (bg: string): CellDef => ({ bg, dots: true })
+  const solid = (bg: string): CellDef => ({ bg })
+  const shim = (bg: string): CellDef => ({ bg, shimmer: true })
 
-  const dotPattern = [true, false, true, false, true, false, true, false, true]
+  const faces: FaceDef[] = [
+    // FRONT — medium grey, dotted + solid mix, slight edge highlight
+    {
+      transform: `rotateY(0deg) translateZ(${H}px)`,
+      border: '#2e2e2e',
+      shadow: 'inset 0 0 30px rgba(255,255,255,0.03)',
+      cells: [
+        dot('#222222'), solid('#1a1a1a'), dot('#222222'),
+        solid('#191919'), shim('#242424'), solid('#191919'),
+        dot('#222222'), solid('#1a1a1a'), dot('#222222'),
+      ],
+    },
+    // BACK — very dark
+    {
+      transform: `rotateY(180deg) translateZ(${H}px)`,
+      border: '#111111',
+      cells: Array(9).fill(solid('#0c0c0c')),
+    },
+    // RIGHT — slightly lit (right side catches some ambient light)
+    {
+      transform: `rotateY(90deg) translateZ(${H}px)`,
+      border: '#252525',
+      cells: [
+        solid('#1e1e1e'), solid('#191919'), solid('#1a1a1a'),
+        solid('#1c1c1c'), dot('#1f1f1f'), solid('#191919'),
+        solid('#1a1a1a'), solid('#181818'), solid('#1a1a1a'),
+      ],
+    },
+    // LEFT — darker (shadow side)
+    {
+      transform: `rotateY(-90deg) translateZ(${H}px)`,
+      border: '#1c1c1c',
+      cells: Array(9).fill(solid('#111111')),
+    },
+    // TOP — lightest face (catches most ambient light)
+    {
+      transform: `rotateX(90deg) translateZ(${H}px)`,
+      border: '#383838',
+      shadow: 'inset 0 0 40px rgba(255,255,255,0.06)',
+      cells: [
+        shim('#303030'), solid('#282828'), shim('#303030'),
+        solid('#262626'), dot('#2e2e2e'), solid('#262626'),
+        shim('#2c2c2c'), solid('#242424'), shim('#2c2c2c'),
+      ],
+    },
+    // BOTTOM — darkest
+    {
+      transform: `rotateX(-90deg) translateZ(${H}px)`,
+      border: '#111111',
+      cells: Array(9).fill(solid('#070707')),
+    },
+  ]
 
   return (
-    <div style={{ perspective: '900px' }} className="flex items-center justify-center w-full h-full">
-      <div
-        style={{
-          width: 240,
-          height: 240,
-          position: 'relative',
-          transformStyle: 'preserve-3d',
-          animation: 'rotateCube 18s linear infinite',
-          transform: 'rotateX(-15deg) rotateY(25deg)',
-        }}
-      >
-        {faces.map((face) => (
-          <div
-            key={face.name}
-            style={{
-              position: 'absolute',
-              width: 240,
-              height: 240,
-              transform: face.transform,
-              transformStyle: 'preserve-3d',
-              backfaceVisibility: 'hidden',
-              ...faceStyles[face.name],
-              border: '1px solid #2a2a2a',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gridTemplateRows: 'repeat(3, 1fr)',
-              gap: 3,
-              padding: 8,
-              boxSizing: 'border-box' as const,
-            }}
-          >
-            {dotPattern.map((dotted, i) => (
-              <Cell key={i} dotted={face.name === 'front' || face.name === 'top' ? dotted : false} />
-            ))}
-          </div>
-        ))}
+    <div style={{ perspective: '1100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      {/* Drop shadow beneath cube */}
+      <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: -60,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 240,
+            height: 40,
+            background: 'radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%)',
+            borderRadius: '50%',
+            filter: 'blur(10px)',
+            animation: 'floatCube 6s ease-in-out infinite',
+          }}
+        />
+
+        <div
+          style={{
+            width: S,
+            height: S,
+            position: 'relative',
+            transformStyle: 'preserve-3d',
+            animation: 'rotateCube 24s linear infinite, floatCube 6s ease-in-out infinite',
+          }}
+        >
+          {faces.map((face, fi) => (
+            <div
+              key={fi}
+              style={{
+                position: 'absolute',
+                width: S,
+                height: S,
+                transform: face.transform,
+                backfaceVisibility: 'hidden',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '5px',
+                padding: '5px',
+                boxSizing: 'border-box',
+                background: '#000000',
+                border: `1px solid ${face.border}`,
+                boxShadow: face.shadow,
+              }}
+            >
+              {face.cells.map((cell, ci) => (
+                <div
+                  key={ci}
+                  style={{
+                    background: cell.bg,
+                    border: `1px solid ${face.border}`,
+                    borderRadius: '3px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    boxShadow: 'inset 1px 1px 0 rgba(255,255,255,0.04), inset -1px -1px 0 rgba(0,0,0,0.4)',
+                  }}
+                >
+                  {cell.dots && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundImage: 'radial-gradient(circle, #3a3a3a 1px, transparent 1px)',
+                        backgroundSize: '9px 9px',
+                        backgroundPosition: '4px 4px',
+                      }}
+                    />
+                  )}
+                  {cell.shimmer && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%, rgba(255,255,255,0.02) 100%)',
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -87,12 +164,23 @@ function PuzzleCube() {
 export default function HeroSection() {
   return (
     <section className="relative pt-24 pb-16 lg:pt-36 lg:pb-32 bg-black overflow-hidden">
-      {/* Subtle dot texture */}
+      {/* Background dot grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
+          backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
           backgroundSize: '40px 40px',
+        }}
+      />
+
+      {/* Ambient light — top center */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
+        style={{
+          width: 800,
+          height: 400,
+          background: 'radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%)',
+          animation: 'glowPulse 5s ease-in-out infinite',
         }}
       />
 
@@ -101,7 +189,7 @@ export default function HeroSection() {
 
           {/* Left: copy */}
           <div>
-            {/* Announcement badge — Resend style */}
+            {/* Badge — Resend style pill */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +206,7 @@ export default function HeroSection() {
               </a>
             </motion.div>
 
-            {/* Headline — Resend style: massive serif */}
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,7 +221,7 @@ export default function HeroSection() {
               <em style={{ fontStyle: 'italic' }}>Your Business</em>
             </motion.h1>
 
-            {/* Sub */}
+            {/* Subtext */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -144,7 +232,7 @@ export default function HeroSection() {
               serving clients across Pakistan and the UK.
             </motion.p>
 
-            {/* CTAs — Resend style */}
+            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -165,7 +253,7 @@ export default function HeroSection() {
               </a>
             </motion.div>
 
-            {/* Trust row */}
+            {/* Trust */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -180,24 +268,22 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: 3D Puzzle Cube — Resend style */}
+          {/* Right: 3D Cube */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-            className="hidden md:flex items-center justify-center h-[420px] relative"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="hidden md:flex items-center justify-center h-[460px] relative"
           >
-            {/* Ambient glow behind cube */}
+            {/* Glow behind cube */}
             <div
-              className="absolute inset-0 rounded-full pointer-events-none"
+              className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'radial-gradient(ellipse 60% 60% at 50% 50%, #ffffff08 0%, transparent 70%)',
+                background: 'radial-gradient(ellipse 60% 50% at 50% 55%, rgba(255,255,255,0.05) 0%, transparent 70%)',
                 animation: 'glowPulse 4s ease-in-out infinite',
               }}
             />
-            <div style={{ animation: 'floatCube 6s ease-in-out infinite' }}>
-              <PuzzleCube />
-            </div>
+            <PuzzleCube />
           </motion.div>
         </div>
       </div>
