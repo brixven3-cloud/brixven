@@ -19,13 +19,13 @@ export default function Logo({
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
             <stop stopColor="#ffffff" />
-            <stop offset="1" stopColor="#dddddd" />
+            <stop offset="1" stopColor="#cccccc" />
           </linearGradient>
         </defs>
         <rect width="40" height="40" rx="4" fill={`url(#${gradientId})`} />
         <rect x="10" y="9" width="5" height="22" rx="1" fill="#000000" />
         <rect x="13" y="9" width="11" height="10" rx="5" fill="#000000" />
-        <rect x="13" y="21" width="13" height="10" rx="5" fill="#C9A96E" />
+        <rect x="13" y="21" width="13" height="10" rx="5" fill="#555555" />
       </svg>
 
       <div className="flex items-baseline gap-0">
@@ -36,7 +36,7 @@ export default function Logo({
           Brix
         </span>
         <span
-          className={`${textClass} font-black text-[#C9A96E] tracking-tight`}
+          className={`${textClass} font-black text-white tracking-tight`}
           style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
         >
           ven

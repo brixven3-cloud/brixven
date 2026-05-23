@@ -19,7 +19,7 @@ h1, h2 {
 }
 
 ::selection {
-  background: #C9A96E30;
+  background: #ffffff30;
   color: #ffffff;
 }
 
@@ -27,3 +27,39 @@ h1, h2 {
 ::-webkit-scrollbar-track { background: #000000; }
 ::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #555555; }
+
+/* 3D Cube rotation */
+@keyframes rotateCube {
+  0%   { transform: rotateX(-15deg) rotateY(25deg); }
+  100% { transform: rotateX(-15deg) rotateY(385deg); }
+}
+
+/* Floating animation for cube */
+@keyframes floatCube {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+
+/* Ambient glow pulse */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.04; }
+  50%       { opacity: 0.08; }
+}
+
+/* Shimmer animation for borders */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Fade up — used by framer-motion but also useful standalone */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scan line for cards */
+@keyframes scanLine {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}

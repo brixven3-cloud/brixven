@@ -22,7 +22,6 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-14">
 
-          {/* Brand */}
           <div className="md:col-span-4">
             <div className="mb-5">
               <Logo gradientId="footer-g" iconSize={26} textClass="text-[1.1rem]" />
@@ -48,7 +47,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           {(Object.entries(FOOTER_LINKS) as [string, { label: string; href: string }[]][]).map(([section, links]) => (
             <div key={section} className="md:col-span-2">
               <h4 className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">{section}</h4>
@@ -64,7 +62,6 @@ export default function Footer() {
             </div>
           ))}
 
-          {/* Contact */}
           <div className="md:col-span-2">
             <h4 className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">Contact</h4>
             <a href={`mailto:${CONTACT_EMAIL}`}
@@ -72,15 +69,15 @@ export default function Footer() {
               <Mail size={13} />{CONTACT_EMAIL}
             </a>
             <Link href="/contact"
-              className="inline-flex items-center text-[11px] font-semibold tracking-[0.15em] uppercase text-white hover:text-[#C9A96E] transition-colors">
+              className="inline-flex items-center text-sm font-semibold text-white hover:text-[#aaaaaa] transition-colors">
               Get a Quote →
             </Link>
           </div>
         </div>
 
         <div className="border-t border-[#1a1a1a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[#555555] text-xs tracking-wide">© {year} Brixven. All rights reserved.</p>
-          <p className="text-[#555555] text-xs tracking-wide">Pakistan 🇵🇰 · United Kingdom 🇬🇧</p>
+          <p className="text-[#444444] text-xs tracking-wide">© {year} Brixven. All rights reserved.</p>
+          <p className="text-[#444444] text-xs tracking-wide">Pakistan 🇵🇰 · United Kingdom 🇬🇧</p>
         </div>
       </div>
     </footer>

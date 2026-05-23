@@ -25,9 +25,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300 ${
-        scrolled
-          ? 'shadow-[0_4px_24px_-2px_rgba(0,0,0,0.8)]'
-          : 'border-b border-[#1a1a1a]'
+        scrolled ? 'shadow-[0_1px_0_0_#1a1a1a]' : 'border-b border-[#1a1a1a]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -41,7 +39,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#888888] hover:text-white transition-colors"
+                className="px-4 py-2 text-sm text-[#888888] hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -52,9 +50,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-black text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-[#e0e0e0] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e0e0e0] transition-colors"
             >
-              Get a Quote →
+              Get started
             </Link>
           </div>
 
@@ -70,17 +68,13 @@ export default function Navbar() {
       </div>
 
       {/* Mobile drawer */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? 'max-h-96' : 'max-h-0'
-        }`}
-      >
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-96' : 'max-h-0'}`}>
         <div className="border-t border-[#1a1a1a] bg-black px-6 pt-3 pb-6 flex flex-col gap-1">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="py-3 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#888888] hover:text-white border-b border-[#1a1a1a] last:border-0 transition-colors"
+              className="py-3 text-sm text-[#888888] hover:text-white border-b border-[#1a1a1a] last:border-0 transition-colors"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -88,9 +82,9 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3 bg-white text-black text-[11px] font-semibold tracking-[0.15em] uppercase"
+            className="mt-3 inline-flex items-center justify-center px-5 py-3 bg-white text-black text-sm font-semibold rounded-full"
           >
-            Get a Quote →
+            Get started
           </Link>
         </div>
       </div>

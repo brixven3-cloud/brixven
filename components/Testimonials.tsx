@@ -8,8 +8,8 @@ export default function Testimonials() {
     <section className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#555555] mb-4 flex items-center justify-center gap-3">
-            <span className="w-6 h-px bg-[#C9A96E]" /> Client Stories <span className="w-6 h-px bg-[#C9A96E]" />
+          <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444444] mb-4 flex items-center justify-center gap-3">
+            <span className="w-6 h-px bg-[#333333]" /> Client Stories <span className="w-6 h-px bg-[#333333]" />
           </p>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
@@ -29,9 +29,8 @@ export default function Testimonials() {
               transition={{ duration: 0.45, delay: i * 0.1 }}
               className="relative bg-[#0a0a0a] p-8 flex flex-col gap-6 hover:bg-[#111111] transition-colors duration-300"
             >
-              {/* Gold quote mark */}
               <span
-                className="text-6xl font-bold text-[#C9A96E]/20 leading-none -mb-4"
+                className="text-6xl font-bold text-white/10 leading-none -mb-4"
                 style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
               >
                 &ldquo;
@@ -42,7 +41,7 @@ export default function Testimonials() {
               </p>
 
               <div className="flex items-center gap-3 pt-4 border-t border-[#1a1a1a]">
-                <div className="w-10 h-10 bg-[#C9A96E] flex items-center justify-center text-black text-xs font-bold flex-shrink-0">
+                <div className="w-10 h-10 bg-white flex items-center justify-center text-black text-xs font-bold flex-shrink-0">
                   {t.avatar}
                 </div>
                 <div className="flex-1 min-w-0">

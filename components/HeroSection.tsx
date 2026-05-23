@@ -3,83 +3,82 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-function HeroMockup() {
+function PuzzleCube() {
+  const faces = [
+    { name: 'front',  transform: 'rotateY(0deg)   translateZ(120px)' },
+    { name: 'back',   transform: 'rotateY(180deg)  translateZ(120px)' },
+    { name: 'right',  transform: 'rotateY(90deg)   translateZ(120px)' },
+    { name: 'left',   transform: 'rotateY(-90deg)  translateZ(120px)' },
+    { name: 'top',    transform: 'rotateX(90deg)   translateZ(120px)' },
+    { name: 'bottom', transform: 'rotateX(-90deg)  translateZ(120px)' },
+  ]
+
+  const faceStyles: Record<string, React.CSSProperties> = {
+    front:  { background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)' },
+    back:   { background: 'linear-gradient(135deg, #111111 0%, #0a0a0a 100%)' },
+    right:  { background: 'linear-gradient(135deg, #222222 0%, #111111 100%)' },
+    left:   { background: 'linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%)' },
+    top:    { background: 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)' },
+    bottom: { background: 'linear-gradient(135deg, #0d0d0d 0%, #050505 100%)' },
+  }
+
+  const Cell = ({ dotted }: { dotted?: boolean }) => (
+    <div style={{
+      border: '1px solid #2a2a2a',
+      borderRadius: 2,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      {dotted && (
+        <div style={{
+          width: 4, height: 4,
+          borderRadius: '50%',
+          background: '#3a3a3a',
+        }} />
+      )}
+    </div>
+  )
+
+  const dotPattern = [true, false, true, false, true, false, true, false, true]
+
   return (
-    <div className="pt-4 pr-4 pb-10 pl-10 sm:pt-2 sm:pr-2 sm:pb-8 sm:pl-8">
-      <div className="relative w-full max-w-lg mx-auto lg:mx-0">
-        {/* Subtle glow */}
-        <div className="absolute -inset-4 bg-gradient-to-br from-[#C9A96E]/10 via-transparent to-[#ffffff]/5 rounded-3xl" />
-
-        {/* Main card */}
-        <div className="relative bg-[#111111] rounded-2xl border border-[#222222] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] overflow-hidden">
-          {/* Browser chrome */}
-          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[#222222] bg-[#0a0a0a]">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#F87171]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FBBF24]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
-            <div className="flex-1 mx-3 h-5 bg-[#1a1a1a] border border-[#2a2a2a] rounded-md flex items-center px-2">
-              <span className="text-[9px] text-[#555555]">app.brixven.com/dashboard</span>
-            </div>
+    <div style={{ perspective: '900px' }} className="flex items-center justify-center w-full h-full">
+      <div
+        style={{
+          width: 240,
+          height: 240,
+          position: 'relative',
+          transformStyle: 'preserve-3d',
+          animation: 'rotateCube 18s linear infinite',
+          transform: 'rotateX(-15deg) rotateY(25deg)',
+        }}
+      >
+        {faces.map((face) => (
+          <div
+            key={face.name}
+            style={{
+              position: 'absolute',
+              width: 240,
+              height: 240,
+              transform: face.transform,
+              transformStyle: 'preserve-3d',
+              backfaceVisibility: 'hidden',
+              ...faceStyles[face.name],
+              border: '1px solid #2a2a2a',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gridTemplateRows: 'repeat(3, 1fr)',
+              gap: 3,
+              padding: 8,
+              boxSizing: 'border-box' as const,
+            }}
+          >
+            {dotPattern.map((dotted, i) => (
+              <Cell key={i} dotted={face.name === 'front' || face.name === 'top' ? dotted : false} />
+            ))}
           </div>
-
-          <div className="p-5">
-            {/* Stats row */}
-            <div className="grid grid-cols-3 gap-3 mb-4">
-              {[
-                { label: 'Revenue', value: '£84,200', change: '+12.4%' },
-                { label: 'Users', value: '12,480', change: '+8.1%' },
-                { label: 'Uptime', value: '99.9%', change: 'Stable' },
-              ].map((s) => (
-                <div key={s.label} className="bg-[#0a0a0a] rounded-xl p-3 border border-[#222222]">
-                  <p className="text-[9px] text-[#555555] mb-1">{s.label}</p>
-                  <p className="text-sm font-bold text-white">{s.value}</p>
-                  <p className="text-[8px] text-emerald-400 font-medium mt-0.5">↑ {s.change}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Chart */}
-            <div className="bg-[#0a0a0a] rounded-xl border border-[#222222] p-4 mb-4">
-              <div className="flex items-end justify-between gap-1.5 h-16">
-                {[30, 52, 40, 68, 55, 72, 60, 85, 70, 90, 78, 95].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 rounded-t-sm"
-                    style={{
-                      height: `${h}%`,
-                      background: i === 11 ? '#C9A96E' : i >= 9 ? '#ffffff' : '#2a2a2a',
-                    }}
-                  />
-                ))}
-              </div>
-              <p className="text-[9px] text-[#555555] mt-2">Monthly revenue trend</p>
-            </div>
-
-            {/* Activity */}
-            <div className="space-y-2">
-              {[
-                { dot: '#C9A96E', text: 'New client onboarded — TechCorp UK' },
-                { dot: '#ffffff', text: 'Sprint 4 deployed to production' },
-                { dot: '#34D399', text: 'SEO report ready for review' },
-              ].map((item) => (
-                <div key={item.text} className="flex items-center gap-2.5">
-                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.dot }} />
-                  <span className="text-[10px] text-[#888888] truncate">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Floating badges */}
-        <div className="absolute top-1 right-1 bg-white text-black text-[10px] font-semibold tracking-wide px-3 py-1.5 shadow-lg uppercase">
-          ✓ Live & running
-        </div>
-        <div className="absolute bottom-2 left-2 bg-[#111111] border border-[#222222] shadow-lg px-4 py-3">
-          <p className="text-[9px] text-[#555555] uppercase tracking-wide">AI Resolved</p>
-          <p className="text-lg font-black text-white">98.2%</p>
-          <p className="text-[9px] text-emerald-400 font-medium">↑ Automated</p>
-        </div>
+        ))}
       </div>
     </div>
   )
@@ -90,47 +89,48 @@ export default function HeroSection() {
     <section className="relative pt-24 pb-16 lg:pt-36 lg:pb-32 bg-black overflow-hidden">
       {/* Subtle dot texture */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
         }}
       />
-      {/* Radial glow top-center */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#C9A96E]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: copy */}
           <div>
-            {/* Label */}
+            {/* Announcement badge — Resend style */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-3 mb-6 sm:mb-8"
+              className="mb-8"
             >
-              <span className="w-8 h-px bg-[#C9A96E]" />
-              <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#555555]">
-                Software Agency — Pakistan &amp; UK
-              </span>
+              <a
+                href="#services"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#2a2a2a] bg-[#0d0d0d] text-white text-xs font-medium hover:border-[#444444] transition-colors"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
+                Pakistan &amp; UK Software Agency
+                <ArrowRight size={12} className="text-[#888888]" />
+              </a>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline — Resend style: massive serif */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.08 }}
-              className="font-bold text-white leading-[1.04] tracking-tight mb-5 sm:mb-6"
+              className="font-bold text-white leading-[1.04] tracking-tight mb-6"
               style={{
                 fontFamily: '"Playfair Display", Georgia, serif',
-                fontSize: 'clamp(2rem, 6vw, 4.75rem)',
+                fontSize: 'clamp(2.5rem, 7vw, 5.5rem)',
               }}
             >
-              We Build Software<br />
-              That Powers Your{' '}
-              <em style={{ color: '#C9A96E', fontStyle: 'italic' }}>Business</em>
+              Software for<br />
+              <em style={{ fontStyle: 'italic' }}>Your Business</em>
             </motion.h1>
 
             {/* Sub */}
@@ -138,31 +138,30 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18 }}
-              className="text-[#888888] text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg"
+              className="text-[#888888] text-lg leading-relaxed mb-10 max-w-lg"
             >
-              Web apps, mobile apps, AI assistants, custom software &amp; expert SEO —
-              serving clients across <strong className="text-white font-semibold">Pakistan</strong> and the{' '}
-              <strong className="text-white font-semibold">UK</strong>.
+              Web apps, mobile apps, AI assistants &amp; expert SEO —
+              serving clients across Pakistan and the UK.
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTAs — Resend style */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.26 }}
-              className="flex flex-col xs:flex-row sm:flex-row gap-3 mb-8 sm:mb-12"
+              className="flex flex-row gap-4 mb-10"
             >
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#e0e0e0] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e0e0e0] transition-colors"
               >
-                Start Your Project <ArrowRight size={13} />
+                Get started
               </a>
               <a
                 href="#work"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 border border-[#333333] text-white text-[11px] font-semibold tracking-[0.2em] uppercase hover:border-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 text-[#888888] text-sm font-medium hover:text-white transition-colors"
               >
-                View Our Work <ArrowRight size={13} />
+                View our work
               </a>
             </motion.div>
 
@@ -171,24 +170,34 @@ export default function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.38 }}
-              className="flex flex-wrap items-center gap-4 sm:gap-6"
+              className="flex flex-wrap items-center gap-6"
             >
               {['🇵🇰 Pakistan', '🇬🇧 United Kingdom', '⭐ 5-star rated'].map((item) => (
-                <span key={item} className="text-xs text-[#555555] font-medium tracking-wide">
+                <span key={item} className="text-xs text-[#555555] font-medium">
                   {item}
                 </span>
               ))}
             </motion.div>
           </div>
 
-          {/* Right: mockup */}
+          {/* Right: 3D Puzzle Cube — Resend style */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-            className="hidden md:block"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="hidden md:flex items-center justify-center h-[420px] relative"
           >
-            <HeroMockup />
+            {/* Ambient glow behind cube */}
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 60% 60% at 50% 50%, #ffffff08 0%, transparent 70%)',
+                animation: 'glowPulse 4s ease-in-out infinite',
+              }}
+            />
+            <div style={{ animation: 'floatCube 6s ease-in-out infinite' }}>
+              <PuzzleCube />
+            </div>
           </motion.div>
         </div>
       </div>
