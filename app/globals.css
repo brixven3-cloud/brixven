@@ -28,6 +28,17 @@ h1, h2 {
 ::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #555555; }
 
+/* Logo hexagon sweep */
+@keyframes hexSweep {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -102; }
+}
+
+@keyframes hexFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 /* 3D Cube rotation */
 @keyframes rotateCube {
   0%   { transform: rotateX(-15deg) rotateY(25deg); }
