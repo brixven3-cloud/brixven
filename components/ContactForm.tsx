@@ -2,17 +2,9 @@
 
 import { useState } from 'react'
 import { CheckCircle2, Send, Loader2 } from 'lucide-react'
-import Button from './Button'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
-
-interface FormState {
-  name: string
-  email: string
-  company: string
-  message: string
-}
-
+interface FormState { name: string; email: string; company: string; message: string }
 const INITIAL: FormState = { name: '', email: '', company: '', message: '' }
 
 export default function ContactForm() {
@@ -50,21 +42,21 @@ export default function ContactForm() {
     }
   }
 
-  const labelClass = 'block text-slate-700 text-xs font-semibold mb-1.5 tracking-wide'
+  const labelClass = 'block text-[#888888] text-xs font-semibold mb-1.5 tracking-wide uppercase'
   const inputClass =
-    'w-full bg-white border border-[#E2E8F0] rounded-xl px-4 py-3 text-slate-900 placeholder-slate-300 text-sm focus:outline-none focus:border-[#2563EB] focus:ring-3 focus:ring-[#2563EB]/10 transition-all duration-200'
+    'w-full bg-[#0a0a0a] border border-[#222222] px-4 py-3 text-white placeholder-[#444444] text-sm focus:outline-none focus:border-white transition-all duration-200'
 
   if (status === 'success') {
     return (
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col items-center text-center gap-5 min-h-[280px] sm:min-h-[380px] justify-center">
-        <div className="w-16 h-16 rounded-full bg-[#EFF6FF] flex items-center justify-center">
-          <CheckCircle2 size={30} className="text-[#2563EB]" />
+      <div className="bg-[#0a0a0a] border border-[#1a1a1a] p-8 sm:p-10 flex flex-col items-center text-center gap-5 min-h-[280px] sm:min-h-[380px] justify-center">
+        <div className="w-16 h-16 border border-[#222222] flex items-center justify-center">
+          <CheckCircle2 size={28} className="text-white" />
         </div>
-        <h3 className="text-slate-900 text-xl font-bold">Message Sent!</h3>
-        <p className="text-slate-500 text-sm max-w-xs leading-relaxed">{serverMsg}</p>
+        <h3 className="text-white text-xl font-bold">Message Sent!</h3>
+        <p className="text-[#888888] text-sm max-w-xs leading-relaxed">{serverMsg}</p>
         <button
           onClick={() => setStatus('idle')}
-          className="text-[#2563EB] text-sm hover:underline mt-1"
+          className="text-[#888888] text-sm hover:text-white transition-colors mt-1"
         >
           Send another message →
         </button>
@@ -75,32 +67,22 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white border border-[#E2E8F0] rounded-2xl p-8 shadow-[0_1px_3px_0_rgba(0,0,0,0.06)] space-y-5"
+      className="bg-[#0a0a0a] border border-[#1a1a1a] p-8 space-y-5"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>
-            Name <span className="text-[#2563EB]">*</span>
-          </label>
+          <label className={labelClass}>Name <span className="text-white">*</span></label>
           <input
-            type="text"
-            required
-            placeholder="Jane Smith"
-            value={form.name}
-            onChange={update('name')}
+            type="text" required placeholder="Jane Smith"
+            value={form.name} onChange={update('name')}
             className={inputClass}
           />
         </div>
         <div>
-          <label className={labelClass}>
-            Email <span className="text-[#2563EB]">*</span>
-          </label>
+          <label className={labelClass}>Email <span className="text-white">*</span></label>
           <input
-            type="email"
-            required
-            placeholder="jane@company.com"
-            value={form.email}
-            onChange={update('email')}
+            type="email" required placeholder="jane@company.com"
+            value={form.email} onChange={update('email')}
             className={inputClass}
           />
         </div>
@@ -109,41 +91,39 @@ export default function ContactForm() {
       <div>
         <label className={labelClass}>Company</label>
         <input
-          type="text"
-          placeholder="Acme Corp (optional)"
-          value={form.company}
-          onChange={update('company')}
+          type="text" placeholder="Acme Corp (optional)"
+          value={form.company} onChange={update('company')}
           className={inputClass}
         />
       </div>
 
       <div>
-        <label className={labelClass}>
-          Message <span className="text-[#2563EB]">*</span>
-        </label>
+        <label className={labelClass}>Message <span className="text-white">*</span></label>
         <textarea
-          required
-          rows={6}
+          required rows={6}
           placeholder="Tell us about your project — what you're building, your timeline, and any technical requirements."
-          value={form.message}
-          onChange={update('message')}
+          value={form.message} onChange={update('message')}
           className={`${inputClass} resize-none`}
         />
       </div>
 
       {status === 'error' && (
-        <p className="text-red-500 text-sm">{serverMsg}</p>
+        <p className="text-red-400 text-sm">{serverMsg}</p>
       )}
 
-      <Button type="submit" size="md" disabled={status === 'loading'} className="w-full">
+      <button
+        type="submit"
+        disabled={status === 'loading'}
+        className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
         {status === 'loading' ? (
           <><Loader2 size={15} className="animate-spin" /> Sending…</>
         ) : (
           <><Send size={14} /> Send Message</>
         )}
-      </Button>
+      </button>
 
-      <p className="text-slate-400 text-xs text-center">
+      <p className="text-[#444444] text-xs text-center">
         We respond within 24 hours. No spam, ever.
       </p>
     </form>

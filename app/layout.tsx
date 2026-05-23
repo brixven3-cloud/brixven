@@ -8,35 +8,46 @@ const BASE_URL = 'https://brixven.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Brixven — Building Intelligent Software',
-    template: '%s — Brixven',
+    default: 'Brixven — Software for Your Business',
+    template: '%s | Brixven',
   },
   description:
-    'Web apps, mobile apps, AI assistants, custom software & expert SEO — serving clients across Pakistan and the UK.',
+    'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK.',
   keywords: [
     'software development Pakistan', 'software development UK',
     'web app development', 'mobile app development', 'AI assistants',
     'custom software', 'SEO Pakistan', 'SEO UK', 'digital agency Pakistan',
-    'Brixven', 'Muhammad Hamza',
+    'Brixven', 'Muhammad Hamza', 'software agency Lahore', 'software agency London',
   ],
   authors: [{ name: 'Brixven', url: BASE_URL }],
   creator: 'Brixven',
   robots: { index: true, follow: true },
   icons: { icon: '/icon.svg', apple: '/icon.svg' },
   alternates: { canonical: BASE_URL },
+
+  // ── Google Search Console verification ──────────────────────────────
+  // 1. Go to https://search.google.com/search-console
+  // 2. Add property → URL prefix → https://brixven.com
+  // 3. Choose "HTML tag" verification method
+  // 4. Copy ONLY the content="..." value (not the full tag)
+  // 5. Paste it below replacing PASTE_YOUR_CODE_HERE
+  verification: {
+    google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
+  },
+  // ────────────────────────────────────────────────────────────────────
+
   openGraph: {
-    title: 'Brixven — Building Intelligent Software',
+    title: 'Brixven — Software for Your Business',
     description:
-      'Full-service software agency — web apps, mobile apps, AI & expert SEO for Pakistan & UK markets.',
+      'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK.',
     url: BASE_URL,
     siteName: 'Brixven',
     type: 'website',
     locale: 'en_GB',
-    // OG image auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Brixven — Building Intelligent Software',
+    title: 'Brixven — Software for Your Business',
     description: 'Web apps · Mobile apps · AI · SEO — Pakistan & UK.',
     creator: '@brixven',
   },
