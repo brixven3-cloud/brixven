@@ -50,33 +50,23 @@ function PuzzleCube({ size = 280 }: { size?: number }) {
   }, [])
 
   useEffect(() => {
-    const onMove = (x: number, y: number) => {
+    const onMouseMove = (e: MouseEvent) => {
       if (!isDragging.current) return
-      const dx = x - lastPos.current.x
-      const dy = y - lastPos.current.y
+      const dx = e.clientX - lastPos.current.x
+      const dy = e.clientY - lastPos.current.y
       velY.current = dx * 0.45
       velX.current = -dy * 0.45
       rotY.current += velY.current
       rotX.current = Math.max(-75, Math.min(75, rotX.current + velX.current))
-      lastPos.current = { x, y }
+      lastPos.current = { x: e.clientX, y: e.clientY }
     }
-
-    const onMouseMove = (e: MouseEvent) => onMove(e.clientX, e.clientY)
-    const onTouchMove = (e: TouchEvent) => {
-      e.preventDefault()
-      onMove(e.touches[0].clientX, e.touches[0].clientY)
-    }
-    const onUp = () => { isDragging.current = false }
+    const onMouseUp = () => { isDragging.current = false }
 
     window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onUp)
-    window.addEventListener('touchmove', onTouchMove, { passive: false })
-    window.addEventListener('touchend', onUp)
+    window.addEventListener('mouseup', onMouseUp)
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onUp)
-      window.removeEventListener('touchmove', onTouchMove)
-      window.removeEventListener('touchend', onUp)
+      window.removeEventListener('mouseup', onMouseUp)
     }
   }, [])
 
@@ -85,6 +75,28 @@ function PuzzleCube({ size = 280 }: { size?: number }) {
     velX.current = 0
     velY.current = 0
     lastPos.current = { x, y }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    startDrag(e.touches[0].clientX, e.touches[0].clientY)
+    const onTouchMove = (ev: TouchEvent) => {
+      ev.preventDefault()
+      if (!isDragging.current) return
+      const dx = ev.touches[0].clientX - lastPos.current.x
+      const dy = ev.touches[0].clientY - lastPos.current.y
+      velY.current = dx * 0.45
+      velX.current = -dy * 0.45
+      rotY.current += velY.current
+      rotX.current = Math.max(-75, Math.min(75, rotX.current + velX.current))
+      lastPos.current = { x: ev.touches[0].clientX, y: ev.touches[0].clientY }
+    }
+    const onTouchEnd = () => {
+      isDragging.current = false
+      window.removeEventListener('touchmove', onTouchMove)
+      window.removeEventListener('touchend', onTouchEnd)
+    }
+    window.addEventListener('touchmove', onTouchMove, { passive: false })
+    window.addEventListener('touchend', onTouchEnd)
   }
 
   type CellDef = { bg: string; dots?: boolean; shimmer?: boolean }
@@ -145,7 +157,7 @@ function PuzzleCube({ size = 280 }: { size?: number }) {
     <div
       style={{ perspective: '1100px', cursor: 'grab' }}
       onMouseDown={(e) => startDrag(e.clientX, e.clientY)}
-      onTouchStart={(e) => startDrag(e.touches[0].clientX, e.touches[0].clientY)}
+      onTouchStart={handleTouchStart}
     >
       <div style={{ position: 'relative' }}>
         {/* Shadow beneath */}

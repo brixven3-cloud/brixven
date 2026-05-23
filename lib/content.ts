@@ -4,10 +4,10 @@ export const CONTACT_EMAIL = 'info@brixven.com'
 export const COUNTRIES = ['Pakistan', 'United Kingdom']
 
 export const NAV_LINKS = [
-  { label: 'Services', href: '#services' },
-  { label: 'Work',     href: '#work' },
-  { label: 'About',   href: '#about' },
-  { label: 'Process', href: '#process' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Work',     href: '/#work' },
+  { label: 'About',   href: '/#about' },
+  { label: 'Process', href: '/#process' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -226,16 +226,16 @@ export const TEAM = [
 // Footer columns — update hrefs once you have real pages
 export const FOOTER_LINKS = {
   Services: [
-    { label: 'Web App Development', href: '#services' },
-    { label: 'Mobile Apps', href: '#services' },
-    { label: 'AI & Automation', href: '#services' },
-    { label: 'SEO Services', href: '#seo' },
-    { label: 'UI/UX Design', href: '#services' },
+    { label: 'Web App Development', href: '/#services' },
+    { label: 'Mobile Apps', href: '/#services' },
+    { label: 'AI & Automation', href: '/#services' },
+    { label: 'SEO Services', href: '/#seo' },
+    { label: 'UI/UX Design', href: '/#services' },
   ],
   Company: [
-    { label: 'About Us', href: '#about' },
-    { label: 'Our Process', href: '#process' },
-    { label: 'Portfolio', href: '#work' },
+    { label: 'About Us', href: '/#about' },
+    { label: 'Our Process', href: '/#process' },
+    { label: 'Portfolio', href: '/#work' },
     { label: 'Careers', href: '#' },
   ],
   Resources: [
