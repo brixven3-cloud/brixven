@@ -5,21 +5,20 @@ import { ArrowRight } from 'lucide-react'
 
 function HeroMockup() {
   return (
-    // Outer wrapper adds breathing room for the absolutely-positioned floating badges on mobile
     <div className="pt-4 pr-4 pb-10 pl-10 sm:pt-2 sm:pr-2 sm:pb-8 sm:pl-8">
       <div className="relative w-full max-w-lg mx-auto lg:mx-0">
-        {/* Subtle warm glow */}
-        <div className="absolute -inset-4 bg-gradient-to-br from-[#E8E4DC]/60 via-[#F9F8F5] to-[#EEF2FF]/40 rounded-3xl" />
+        {/* Subtle glow */}
+        <div className="absolute -inset-4 bg-gradient-to-br from-[#C9A96E]/10 via-transparent to-[#ffffff]/5 rounded-3xl" />
 
         {/* Main card */}
-        <div className="relative bg-white rounded-2xl border border-[#E8E4DC] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.08)] overflow-hidden">
+        <div className="relative bg-[#111111] rounded-2xl border border-[#222222] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] overflow-hidden">
           {/* Browser chrome */}
-          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[#F0EDE6] bg-[#F9F8F5]">
+          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[#222222] bg-[#0a0a0a]">
             <div className="w-2.5 h-2.5 rounded-full bg-[#F87171]" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#FBBF24]" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
-            <div className="flex-1 mx-3 h-5 bg-white border border-[#E8E4DC] rounded-md flex items-center px-2">
-              <span className="text-[9px] text-[#9B9B9B]">app.brixven.com/dashboard</span>
+            <div className="flex-1 mx-3 h-5 bg-[#1a1a1a] border border-[#2a2a2a] rounded-md flex items-center px-2">
+              <span className="text-[9px] text-[#555555]">app.brixven.com/dashboard</span>
             </div>
           </div>
 
@@ -31,16 +30,16 @@ function HeroMockup() {
                 { label: 'Users', value: '12,480', change: '+8.1%' },
                 { label: 'Uptime', value: '99.9%', change: 'Stable' },
               ].map((s) => (
-                <div key={s.label} className="bg-[#F9F8F5] rounded-xl p-3 border border-[#E8E4DC]">
-                  <p className="text-[9px] text-[#9B9B9B] mb-1">{s.label}</p>
-                  <p className="text-sm font-bold text-[#1C1C1C]">{s.value}</p>
-                  <p className="text-[8px] text-emerald-600 font-medium mt-0.5">↑ {s.change}</p>
+                <div key={s.label} className="bg-[#0a0a0a] rounded-xl p-3 border border-[#222222]">
+                  <p className="text-[9px] text-[#555555] mb-1">{s.label}</p>
+                  <p className="text-sm font-bold text-white">{s.value}</p>
+                  <p className="text-[8px] text-emerald-400 font-medium mt-0.5">↑ {s.change}</p>
                 </div>
               ))}
             </div>
 
             {/* Chart */}
-            <div className="bg-[#F9F8F5] rounded-xl border border-[#E8E4DC] p-4 mb-4">
+            <div className="bg-[#0a0a0a] rounded-xl border border-[#222222] p-4 mb-4">
               <div className="flex items-end justify-between gap-1.5 h-16">
                 {[30, 52, 40, 68, 55, 72, 60, 85, 70, 90, 78, 95].map((h, i) => (
                   <div
@@ -48,38 +47,38 @@ function HeroMockup() {
                     className="flex-1 rounded-t-sm"
                     style={{
                       height: `${h}%`,
-                      background: i === 11 ? '#C9A96E' : i >= 9 ? '#1C1C1C' : '#E8E4DC',
+                      background: i === 11 ? '#C9A96E' : i >= 9 ? '#ffffff' : '#2a2a2a',
                     }}
                   />
                 ))}
               </div>
-              <p className="text-[9px] text-[#9B9B9B] mt-2">Monthly revenue trend</p>
+              <p className="text-[9px] text-[#555555] mt-2">Monthly revenue trend</p>
             </div>
 
             {/* Activity */}
             <div className="space-y-2">
               {[
                 { dot: '#C9A96E', text: 'New client onboarded — TechCorp UK' },
-                { dot: '#1C1C1C', text: 'Sprint 4 deployed to production' },
+                { dot: '#ffffff', text: 'Sprint 4 deployed to production' },
                 { dot: '#34D399', text: 'SEO report ready for review' },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: item.dot }} />
-                  <span className="text-[10px] text-[#6B6B6B] truncate">{item.text}</span>
+                  <span className="text-[10px] text-[#888888] truncate">{item.text}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Floating badges — positioned with positive offsets inside the padded wrapper */}
-        <div className="absolute top-1 right-1 bg-[#1C1C1C] text-white text-[10px] font-semibold tracking-wide px-3 py-1.5 shadow-lg uppercase">
+        {/* Floating badges */}
+        <div className="absolute top-1 right-1 bg-white text-black text-[10px] font-semibold tracking-wide px-3 py-1.5 shadow-lg uppercase">
           ✓ Live & running
         </div>
-        <div className="absolute bottom-2 left-2 bg-white border border-[#E8E4DC] shadow-lg px-4 py-3">
-          <p className="text-[9px] text-[#9B9B9B] uppercase tracking-wide">AI Resolved</p>
-          <p className="text-lg font-black text-[#1C1C1C]">98.2%</p>
-          <p className="text-[9px] text-emerald-600 font-medium">↑ Automated</p>
+        <div className="absolute bottom-2 left-2 bg-[#111111] border border-[#222222] shadow-lg px-4 py-3">
+          <p className="text-[9px] text-[#555555] uppercase tracking-wide">AI Resolved</p>
+          <p className="text-lg font-black text-white">98.2%</p>
+          <p className="text-[9px] text-emerald-400 font-medium">↑ Automated</p>
         </div>
       </div>
     </div>
@@ -88,22 +87,24 @@ function HeroMockup() {
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-24 pb-16 lg:pt-36 lg:pb-32 bg-[#F9F8F5] overflow-hidden">
+    <section className="relative pt-24 pb-16 lg:pt-36 lg:pb-32 bg-black overflow-hidden">
       {/* Subtle dot texture */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage: `radial-gradient(circle, #1C1C1C 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, #ffffff 1px, transparent 1px)`,
           backgroundSize: '40px 40px',
         }}
       />
+      {/* Radial glow top-center */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#C9A96E]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Left: copy */}
           <div>
-            {/* Editorial label */}
+            {/* Label */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,17 +112,17 @@ export default function HeroSection() {
               className="flex items-center gap-3 mb-6 sm:mb-8"
             >
               <span className="w-8 h-px bg-[#C9A96E]" />
-              <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#9B9B9B]">
+              <span className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#555555]">
                 Software Agency — Pakistan &amp; UK
               </span>
             </motion.div>
 
-            {/* Headline — responsive Playfair Display */}
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.08 }}
-              className="font-bold text-[#1C1C1C] leading-[1.04] tracking-tight mb-5 sm:mb-6"
+              className="font-bold text-white leading-[1.04] tracking-tight mb-5 sm:mb-6"
               style={{
                 fontFamily: '"Playfair Display", Georgia, serif',
                 fontSize: 'clamp(2rem, 6vw, 4.75rem)',
@@ -137,11 +138,11 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18 }}
-              className="text-[#6B6B6B] text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg"
+              className="text-[#888888] text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg"
             >
               Web apps, mobile apps, AI assistants, custom software &amp; expert SEO —
-              serving clients across <strong className="text-[#1C1C1C] font-semibold">Pakistan</strong> and the{' '}
-              <strong className="text-[#1C1C1C] font-semibold">UK</strong>.
+              serving clients across <strong className="text-white font-semibold">Pakistan</strong> and the{' '}
+              <strong className="text-white font-semibold">UK</strong>.
             </motion.p>
 
             {/* CTAs */}
@@ -153,13 +154,13 @@ export default function HeroSection() {
             >
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#1C1C1C] text-white text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-black transition-colors"
+                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-black text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#e0e0e0] transition-colors"
               >
                 Start Your Project <ArrowRight size={13} />
               </a>
               <a
                 href="#work"
-                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 border border-[#1C1C1C] text-[#1C1C1C] text-[11px] font-semibold tracking-[0.2em] uppercase hover:bg-[#1C1C1C] hover:text-white transition-colors"
+                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 border border-[#333333] text-white text-[11px] font-semibold tracking-[0.2em] uppercase hover:border-white transition-colors"
               >
                 View Our Work <ArrowRight size={13} />
               </a>
@@ -173,14 +174,14 @@ export default function HeroSection() {
               className="flex flex-wrap items-center gap-4 sm:gap-6"
             >
               {['🇵🇰 Pakistan', '🇬🇧 United Kingdom', '⭐ 5-star rated'].map((item) => (
-                <span key={item} className="text-xs text-[#9B9B9B] font-medium tracking-wide">
+                <span key={item} className="text-xs text-[#555555] font-medium tracking-wide">
                   {item}
                 </span>
               ))}
             </motion.div>
           </div>
 
-          {/* Right: mockup — hidden on small mobile, shown from md up */}
+          {/* Right: mockup */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
