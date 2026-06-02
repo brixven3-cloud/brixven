@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AuroraBackground from '@/components/AuroraBackground'
+import CustomCursor from '@/components/CustomCursor'
 
 const BASE_URL = 'https://brixven.com'
 
@@ -12,12 +14,13 @@ export const metadata: Metadata = {
     template: '%s | Brixven',
   },
   description:
-    'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK.',
+    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
   keywords: [
-    'software development Pakistan', 'software development UK',
-    'web app development', 'mobile app development', 'AI assistants',
-    'custom software', 'SEO Pakistan', 'SEO UK', 'digital agency Pakistan',
-    'Brixven', 'Muhammad Hamza', 'software agency Lahore', 'software agency London',
+    'software development UK', 'software development Ireland', 'web development Dublin',
+    'web design Ireland', 'digital agency Ireland', 'digital agency Dublin',
+    'web app development Europe', 'mobile app development', 'AI assistants',
+    'custom software', 'SEO UK', 'SEO Ireland', 'Dublin web agency',
+    'software agency London', 'software agency Dublin', 'Brixven', 'Muhammad Hamza',
   ],
   authors: [{ name: 'Brixven', url: BASE_URL }],
   creator: 'Brixven',
@@ -26,11 +29,6 @@ export const metadata: Metadata = {
   alternates: { canonical: BASE_URL },
 
   // ── Google Search Console verification ──────────────────────────────
-  // 1. Go to https://search.google.com/search-console
-  // 2. Add property → URL prefix → https://brixven.com
-  // 3. Choose "HTML tag" verification method
-  // 4. Copy ONLY the content="..." value (not the full tag)
-  // 5. Paste it below replacing PASTE_YOUR_CODE_HERE
   verification: {
     google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
   },
@@ -39,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Brixven — Software for Your Business',
     description:
-      'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK.',
+      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
     url: BASE_URL,
     siteName: 'Brixven',
     type: 'website',
@@ -48,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Brixven — Software for Your Business',
-    description: 'Web apps · Mobile apps · AI · SEO — Pakistan & UK.',
+    description: 'Web apps · Mobile apps · AI · SEO — UK, Ireland & Europe.',
     creator: '@brixven',
   },
 }
@@ -61,31 +59,36 @@ const organizationSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
   description:
-    'Full-service software agency providing web apps, mobile apps, AI assistants, custom software, and SEO services for Pakistan and UK markets.',
+    'Founder-led software studio providing web apps, mobile apps, AI assistants, custom software, and SEO for UK, Irish, and European businesses.',
   foundingDate: '2020',
   founder: {
     '@type': 'Person',
     name: 'Muhammad Hamza',
-    jobTitle: 'CEO & Founder',
+    jobTitle: 'Founder & Lead Engineer',
   },
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'info@brixven.com',
     contactType: 'customer support',
-    areaServed: ['PK', 'GB'],
+    areaServed: ['PK', 'GB', 'IE'],
     availableLanguage: ['English', 'Urdu'],
   },
   sameAs: ['https://linkedin.com/company/brixven', 'https://twitter.com/brixven'],
   address: [
     {
       '@type': 'PostalAddress',
-      addressLocality: 'Lahore',
-      addressCountry: 'PK',
+      addressLocality: 'Dublin',
+      addressCountry: 'IE',
     },
     {
       '@type': 'PostalAddress',
       addressLocality: 'London',
       addressCountry: 'GB',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Lahore',
+      addressCountry: 'PK',
     },
   ],
 }
@@ -106,9 +109,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <AuroraBackground />
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CustomCursor />
       </body>
     </html>
   )

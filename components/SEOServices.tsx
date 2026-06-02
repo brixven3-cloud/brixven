@@ -12,8 +12,8 @@ export default function SEOServices() {
     <section id="seo" className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-16">
-          <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-[#444444] mb-4">
-            🇵🇰 Pakistan &amp; 🇬🇧 UK Markets
+          <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-emerald-600 mb-4">
+            🇬🇧 UK &amp; 🇮🇪 Ireland &amp; 🇪🇺 Europe
           </div>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
@@ -22,29 +22,29 @@ export default function SEOServices() {
             SEO That Actually<br />
             <em style={{ fontStyle: 'italic' }}>Moves the Needle</em>
           </h2>
-          <p className="text-[#888888] text-lg leading-relaxed">
-            Local expertise, global standards. We rank businesses in both markets with
-            strategies built for each audience.
+          <p className="text-[#888] text-lg leading-relaxed">
+            Local expertise, international standards. We rank businesses across UK, Ireland,
+            and European markets with strategies built for each audience.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1a1a1a] border border-[#1a1a1a] mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {SEO_FEATURES.map((feature, i) => {
             const Icon = iconMap[feature.icon] ?? Search
             return (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="group bg-[#0a0a0a] hover:bg-[#111111] p-7 transition-colors duration-300"
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className="group glass-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/20"
               >
-                <div className="w-9 h-9 border border-[#222222] flex items-center justify-center mb-4 group-hover:border-white transition-colors duration-300">
-                  <Icon size={16} className="text-[#555555] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 group-hover:bg-emerald-500/15 transition-colors">
+                  <Icon size={16} className="text-emerald-400" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-white font-bold text-base mb-1.5">{feature.title}</h3>
-                <p className="text-[#888888] text-sm leading-relaxed">{feature.description}</p>
+                <p className="text-[#6b7a8d] text-sm leading-relaxed">{feature.description}</p>
               </motion.div>
             )
           })}
@@ -53,11 +53,11 @@ export default function SEOServices() {
         <div className="text-center">
           <a
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e0e0e0] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-500 text-white text-sm font-semibold rounded-full hover:bg-emerald-400 transition-all duration-200 hover:shadow-[0_0_28px_rgba(16,185,129,0.3)]"
           >
             Get a Free SEO Audit →
           </a>
-          <p className="text-[#444444] text-xs mt-3 tracking-wide">
+          <p className="text-[#444] text-xs mt-3 tracking-wide">
             No commitment — we&apos;ll show you exactly where you stand.
           </p>
         </div>

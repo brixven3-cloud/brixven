@@ -50,9 +50,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e0e0e0] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-500 text-white text-sm font-semibold rounded-full hover:bg-emerald-400 transition-colors hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
-              Get started
+              Start a project
             </Link>
           </div>
 
@@ -82,9 +82,10 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="mt-3 inline-flex items-center justify-center px-5 py-3 bg-white text-black text-sm font-semibold rounded-full"
+            className="mt-3 inline-flex items-center justify-center px-5 py-3 bg-emerald-500 text-white text-sm font-semibold rounded-full hover:bg-emerald-400 transition-colors"
+            onClick={() => setMobileOpen(false)}
           >
-            Get started
+            Start a project
           </Link>
         </div>
       </div>

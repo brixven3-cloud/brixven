@@ -4,12 +4,12 @@ import HeroSection from '@/components/HeroSection'
 export const metadata: Metadata = {
   title: 'Brixven — Software for Your Business',
   description:
-    'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK. Full-service software agency in Lahore & London.',
+    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe. Founder-led digital studio.',
   alternates: { canonical: 'https://brixven.com' },
   openGraph: {
-    title: 'Brixven — Software for Your Business',
+    title: 'Brixven — Digital Products Built to Scale',
     description:
-      'Web apps, mobile apps, AI assistants & expert SEO — serving clients across Pakistan and the UK.',
+      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
     url: 'https://brixven.com',
     type: 'website',
   },
