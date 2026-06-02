@@ -9,13 +9,13 @@ html {
 body {
   background: #000000;
   color: #ffffff;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2 {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: var(--font-playfair), Georgia, 'Times New Roman', serif;
 }
 
 ::selection {
@@ -39,110 +39,21 @@ h1, h2 {
   to   { opacity: 1; }
 }
 
-/* 3D Cube rotation */
-@keyframes rotateCube {
-  0%   { transform: rotateX(-15deg) rotateY(25deg); }
-  100% { transform: rotateX(-15deg) rotateY(385deg); }
-}
-
-/* Floating animation for cube */
-@keyframes floatCube {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-16px); }
-}
-
-/* Ambient glow pulse */
+/* Ambient glow pulse — used by Logo */
 @keyframes glowPulse {
   0%, 100% { opacity: 0.04; }
   50%       { opacity: 0.08; }
 }
 
-/* Shimmer animation for borders */
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
+/* Embla carousel */
+.embla { overflow: hidden; }
+.embla__container { display: flex; }
+.embla__slide { flex: 0 0 auto; min-width: 0; }
 
-/* Fade up — used by framer-motion but also useful standalone */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Scan line for cards */
-@keyframes scanLine {
-  0%   { top: 0%; }
-  100% { top: 100%; }
-}
-
-/* ─── Aurora background blobs ──────────────────────────────────────────────── */
-.aurora-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.055;
-  will-change: transform;
-}
-.aurora-blob-1 {
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, #10b981, transparent 70%);
-  top: -15%;
-  right: -10%;
-  animation: auroraFloat1 18s ease-in-out infinite;
-}
-.aurora-blob-2 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, #6366f1, transparent 70%);
-  bottom: 15%;
-  left: -12%;
-  animation: auroraFloat2 22s ease-in-out infinite;
-}
-.aurora-blob-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #10b981, transparent 70%);
-  top: 55%;
-  left: 45%;
-  animation: auroraFloat3 28s ease-in-out infinite;
-}
-
-@keyframes auroraFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-4%, 8%) scale(1.08); }
-  66%       { transform: translate(7%, -4%) scale(0.96); }
-}
-@keyframes auroraFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(7%, -8%) scale(1.06); }
-  66%       { transform: translate(-4%, 5%) scale(1.1); }
-}
-@keyframes auroraFloat3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50%       { transform: translate(-6%, -4%) scale(1.12); }
-}
-
-/* ─── Glassmorphism card ───────────────────────────────────────────────────── */
-.glass-card {
-  background: rgba(255, 255, 255, 0.025);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-/* ─── Reduced motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob { animation: none !important; }
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ─── Custom cursor (desktop with fine pointer) ────────────────────────────── */
-@media (hover: hover) and (pointer: fine) {
-  body, a, button, [role="button"] { cursor: none; }
 }

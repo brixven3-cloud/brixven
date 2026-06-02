@@ -25,7 +25,7 @@ export default function ServicesGrid() {
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold text-white mb-4"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Full-Service Digital Capability
           </h2>
@@ -44,10 +44,10 @@ export default function ServicesGrid() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="group glass-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/20 hover:shadow-[0_12px_40px_rgba(16,185,129,0.07)]"
+                className="group bg-[#0a0a0a] border border-[#1a1a1a] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#333]"
               >
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 group-hover:bg-emerald-500/15 transition-colors">
-                  <Icon size={18} className="text-emerald-400" strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-lg bg-[#111] border border-[#222] flex items-center justify-center mb-5 group-hover:bg-[#1a1a1a] transition-colors">
+                  <Icon size={18} className="text-white" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-white font-semibold text-[0.9375rem] mb-2 leading-snug">{svc.title}</h3>
                 <p className="text-[#6b7a8d] text-sm leading-relaxed">{svc.description}</p>

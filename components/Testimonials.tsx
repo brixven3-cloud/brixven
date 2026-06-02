@@ -1,10 +1,22 @@
 'use client'
 
+import { useCallback, useEffect, useRef } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
 import { motion } from 'framer-motion'
-import { Quote } from 'lucide-react'
+import { Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 import { TESTIMONIALS } from '@/lib/content'
 
 export default function Testimonials() {
+  const autoplayPlugin = useRef(Autoplay({ delay: 4500, stopOnInteraction: true }))
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start' },
+    [autoplayPlugin.current],
+  )
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+
   return (
     <section className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -13,59 +25,77 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-xl mx-auto mb-14"
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10"
         >
-          <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center justify-center gap-3">
-            <span className="w-6 h-px bg-[#333]" /> Client Experience <span className="w-6 h-px bg-[#333]" />
-          </p>
-          <h2
-            className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
-          >
-            What to Expect<br />
-            <em style={{ fontStyle: 'italic' }}>Working With Us</em>
-          </h2>
-          <p className="text-[#888] text-sm mt-2">
-            Illustrative outcomes from typical client engagements — names withheld for privacy.
-          </p>
+          <div className="max-w-xl">
+            <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+              <span className="w-6 h-px bg-[#333]" /> Client Experience
+            </p>
+            <h2
+              className="text-4xl sm:text-5xl font-bold text-white mb-3 leading-[1.1]"
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            >
+              What to Expect<br />
+              <em style={{ fontStyle: 'italic' }}>Working With Us</em>
+            </h2>
+            <p className="text-[#888] text-sm">
+              Illustrative outcomes from typical client engagements — names withheld for privacy.
+            </p>
+          </div>
+
+          {/* Prev / Next */}
+          <div className="flex gap-2 flex-shrink-0">
+            <button
+              onClick={scrollPrev}
+              aria-label="Previous testimonial"
+              className="w-10 h-10 border border-[#222] bg-[#0a0a0a] flex items-center justify-center text-[#666] hover:text-white hover:border-[#555] transition-colors"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={scrollNext}
+              aria-label="Next testimonial"
+              className="w-10 h-10 border border-[#222] bg-[#0a0a0a] flex items-center justify-center text-[#666] hover:text-white hover:border-[#555] transition-colors"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          {TESTIMONIALS.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card p-6 flex flex-col gap-5"
-            >
-              <Quote size={20} className="text-emerald-500/50" />
-              <p className="text-[#aab8cc] text-sm leading-relaxed italic flex-1">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-white/5">
-                <div className="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-sm">
-                  {t.flag}
-                </div>
-                <div>
-                  <p className="text-white text-xs font-semibold">{t.name}</p>
-                  <p className="text-[#556070] text-xs">{t.role}</p>
+        <div className="embla" ref={emblaRef}>
+          <div className="embla__container gap-4">
+            {TESTIMONIALS.map((t, i) => (
+              <div
+                key={i}
+                className="embla__slide flex-[0_0_90%] sm:flex-[0_0_50%] lg:flex-[0_0_calc(33.333%-11px)] bg-[#0a0a0a] border border-[#1a1a1a] p-6 flex flex-col gap-5"
+              >
+                <Quote size={20} className="text-white/20" />
+                <p className="text-[#aab8cc] text-sm leading-relaxed italic flex-1">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3 pt-4 border-t border-[#1a1a1a]">
+                  <div className="w-9 h-9 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-sm">
+                    {t.flag}
+                  </div>
+                  <div>
+                    <p className="text-white text-xs font-semibold">{t.name}</p>
+                    <p className="text-[#556070] text-xs">{t.role}</p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-[#445060] text-xs"
+          className="text-center text-[#445060] text-xs mt-10"
         >
           Real verified reviews will appear on{' '}
-          <span className="text-emerald-600">Google</span> and{' '}
-          <span className="text-emerald-600">Clutch</span> as they are published.
+          <span className="text-[#888]">Google</span> and{' '}
+          <span className="text-[#888]">Clutch</span> as they are published.
         </motion.p>
       </div>
     </section>

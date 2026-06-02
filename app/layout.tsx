@@ -1,9 +1,22 @@
 import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import AuroraBackground from '@/components/AuroraBackground'
-import CustomCursor from '@/components/CustomCursor'
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+  style: ['normal', 'italic'],
+  weight: ['400', '700', '800', '900'],
+})
 
 const BASE_URL = 'https://brixven.com'
 
@@ -27,13 +40,9 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   icons: { icon: '/icon.svg', apple: '/icon.svg' },
   alternates: { canonical: BASE_URL },
-
-  // ── Google Search Console verification ──────────────────────────────
   verification: {
     google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
   },
-  // ────────────────────────────────────────────────────────────────────
-
   openGraph: {
     title: 'Brixven — Software for Your Business',
     description:
@@ -51,7 +60,6 @@ export const metadata: Metadata = {
   },
 }
 
-// JSON-LD Organization schema
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -75,45 +83,42 @@ const organizationSchema = {
   },
   sameAs: ['https://linkedin.com/company/brixven', 'https://twitter.com/brixven'],
   address: [
-    {
-      '@type': 'PostalAddress',
-      addressLocality: 'Dublin',
-      addressCountry: 'IE',
-    },
-    {
-      '@type': 'PostalAddress',
-      addressLocality: 'London',
-      addressCountry: 'GB',
-    },
-    {
-      '@type': 'PostalAddress',
-      addressLocality: 'Lahore',
-      addressCountry: 'PK',
-    },
+    { '@type': 'PostalAddress', addressLocality: 'Dublin', addressCountry: 'IE' },
+    { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+    { '@type': 'PostalAddress', addressLocality: 'Lahore', addressCountry: 'PK' },
   ],
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  provider: { '@type': 'Organization', name: 'Brixven' },
+  serviceType: ['Web Application Development', 'Mobile App Development', 'AI Automation', 'SEO Services', 'UI/UX Design'],
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'Ireland' },
+    { '@type': 'Country', name: 'Pakistan' },
+  ],
+  description: 'Full-stack digital services for growing businesses across UK, Ireland, and Europe.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700;1,800&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        />
       </head>
       <body>
-        <AuroraBackground />
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <CustomCursor />
       </body>
     </html>
   )

@@ -14,7 +14,7 @@ export default function Portfolio() {
           </p>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Selected Projects
           </h2>
@@ -23,60 +23,61 @@ export default function Portfolio() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {PORTFOLIO.map((project, i) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group glass-card overflow-hidden hover:-translate-y-1 transition-all duration-300 hover:border-white/10"
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="group bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:-translate-y-1 hover:border-[#333] transition-all duration-300 block"
             >
-              {/* Project preview area */}
-              <div className="relative h-44 flex items-center justify-center overflow-hidden bg-[#080e18]">
-                {/* Subtle accent glow */}
+              {/* Header strip */}
+              <div className="relative h-40 bg-[#080808] flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
+                {/* Subtle grid pattern */}
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `radial-gradient(ellipse at center, ${project.accent}15, transparent 70%)` }}
+                  className="absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
+                    backgroundSize: '20px 20px',
+                  }}
                 />
-                {/* Mock browser window */}
-                <div className="relative w-36 bg-[#0d1521] border border-[#1e2d3d] overflow-hidden shadow-lg">
-                  <div className="h-3.5 flex items-center gap-1 px-2 border-b border-[#1e2d3d] bg-[#080e18]">
-                    {['#F87171', '#FBBF24', '#34D399'].map((c) => (
-                      <div key={c} className="w-1.5 h-1.5 rounded-full" style={{ background: c }} />
-                    ))}
-                  </div>
-                  <div className="p-2.5 space-y-1.5">
-                    <div className="h-1.5 rounded-sm" style={{ width: '80%', background: project.accent + '40' }} />
-                    <div className="h-1.5 bg-[#1e2d3d] rounded-sm w-full" />
-                    <div className="h-1.5 bg-[#1e2d3d] rounded-sm" style={{ width: '60%' }} />
-                    <div className="mt-2 h-8 border border-[#1e2d3d] bg-[#080e18]" />
-                  </div>
-                </div>
+                {/* Initials / icon */}
+                <span
+                  className="relative text-4xl font-bold text-[#222] select-none"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  {project.title.slice(0, 2).toUpperCase()}
+                </span>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 backdrop-blur-[2px]">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white"
-                    style={{ background: project.accent }}
-                  >
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70">
+                  <div className="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white">
                     <ArrowUpRight size={18} />
                   </div>
                 </div>
               </div>
 
               <div className="p-6">
-                <span
-                  className="text-[10px] font-semibold tracking-[0.15em] uppercase mb-3 block"
-                  style={{ color: project.accent }}
-                >
-                  {project.category}
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <span className="text-[10px] font-semibold tracking-[0.12em] uppercase text-[#555]">
+                    {project.category}
+                  </span>
+                  <span className="flex-shrink-0 text-[10px] font-semibold tracking-[0.1em] uppercase text-[#444] border border-[#222] px-2 py-0.5">
+                    Demo
+                  </span>
+                </div>
+                <h3 className="text-white font-bold text-base mb-1 group-hover:text-[#ccc] transition-colors">{project.title}</h3>
+                <p className="text-[#556070] text-xs font-medium mb-3">{project.subtitle}</p>
+                <p className="text-[#8899aa] text-sm leading-relaxed mb-5">{project.description}</p>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white border-b border-[#333] pb-0.5 group-hover:border-white transition-colors">
+                  View Live Demo <ArrowUpRight size={12} />
                 </span>
-                <h3 className="text-white font-bold text-base mb-1">{project.title}</h3>
-                <p className="text-[#556070] text-xs font-medium mb-2">{project.subtitle}</p>
-                <p className="text-[#8899aa] text-sm leading-relaxed">{project.description}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>

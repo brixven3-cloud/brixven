@@ -25,10 +25,10 @@ export default function TeamSection() {
             </p>
             <h2
               className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-[1.1]"
-              style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
             >
               Founder-Led,<br />
-              <em style={{ fontStyle: 'italic', color: '#10b981' }}>AI-Augmented</em>
+              <em style={{ fontStyle: 'italic', color: '#cccccc' }}>AI-Augmented</em>
             </h2>
             <p className="text-[#888] text-lg leading-relaxed mb-6">
               Brixven operates as a focused studio — not a 200-person agency with layers of
@@ -48,8 +48,8 @@ export default function TeamSection() {
                 { icon: Zap, text: 'UK · IE · EU market depth' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2.5 text-sm text-[#8899aa]">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                    <Icon size={11} className="text-emerald-400" />
+                  <div className="w-5 h-5 rounded-full bg-[#111] border border-[#222] flex items-center justify-center flex-shrink-0">
+                    <Icon size={11} className="text-white" />
                   </div>
                   {text}
                 </div>
@@ -65,41 +65,41 @@ export default function TeamSection() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="glass-card overflow-hidden max-w-sm">
-                <div className="relative h-64 bg-[#080e18] flex items-center justify-center overflow-hidden">
+              <div className="bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden max-w-sm">
+                <div className="relative h-64 bg-[#080808] flex items-center justify-center overflow-hidden">
                   {founder.photo ? (
                     <Image
                       src={founder.photo}
                       alt={founder.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 384px"
                       className="object-cover object-top"
                     />
                   ) : (
-                    <div className="w-24 h-24 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-2xl font-bold text-emerald-400">
+                    <div className="w-24 h-24 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-2xl font-bold text-white">
                       {founder.initials}
                     </div>
                   )}
                   <div className="absolute top-4 right-4 text-xl">{founder.flag}</div>
-                  {/* Emerald glow at bottom */}
-                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#080e18] to-transparent" />
+                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                 </div>
 
                 <div className="p-6">
                   <h3 className="text-white font-bold text-lg leading-tight mb-0.5">{founder.name}</h3>
-                  <p className="text-emerald-400 text-xs font-semibold tracking-[0.15em] uppercase mb-3">{founder.role}</p>
+                  <p className="text-[#888] text-xs font-semibold tracking-[0.15em] uppercase mb-3">{founder.role}</p>
                   <p className="text-[#8899aa] text-sm leading-relaxed mb-5">{founder.bio}</p>
-                  <div className="flex gap-2 pt-4 border-t border-white/5">
+                  <div className="flex gap-2 pt-4 border-t border-[#1a1a1a]">
                     <a
                       href={founder.linkedin}
                       aria-label={`${founder.name} on LinkedIn`}
-                      className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-[#556070] hover:text-emerald-400 transition-colors"
+                      className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
                     >
                       <Linkedin size={13} />
                     </a>
                     <a
                       href={founder.twitter}
                       aria-label={`${founder.name} on X / Twitter`}
-                      className="w-8 h-8 rounded-lg glass-card flex items-center justify-center text-[#556070] hover:text-emerald-400 transition-colors"
+                      className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
                     >
                       <Twitter size={13} />
                     </a>

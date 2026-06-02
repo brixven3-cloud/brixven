@@ -13,7 +13,7 @@ export default function ProcessSection() {
           </p>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
-            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+            style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
           >
             Our Process
           </h2>
@@ -21,8 +21,8 @@ export default function ProcessSection() {
         </div>
 
         <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Dashed connector line on desktop */}
-          <div className="hidden lg:block absolute top-8 left-[calc(12.5%+2rem)] right-[calc(12.5%+2rem)] border-t border-dashed border-emerald-900/40" />
+          {/* Connector line on desktop */}
+          <div className="hidden lg:block absolute top-8 left-[calc(12.5%+2rem)] right-[calc(12.5%+2rem)] border-t border-dashed border-[#333]" />
 
           {PROCESS.map((step, i) => (
             <motion.div
@@ -31,12 +31,12 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-card flex flex-col items-center text-center px-5 py-8 hover:border-emerald-500/20 transition-all duration-300"
+              className="bg-[#0a0a0a] border border-[#1a1a1a] flex flex-col items-center text-center px-5 py-8 hover:border-[#333] transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center mb-6">
                 <span
-                  className="text-lg font-bold text-emerald-400"
-                  style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+                  className="text-lg font-bold text-white"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                 >
                   {step.step}
                 </span>

@@ -45,7 +45,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-8 h-8 border border-[#222] bg-[#111] flex items-center justify-center text-[#555] hover:text-emerald-400 hover:border-emerald-800 transition-all"
+                  className="w-8 h-8 border border-[#222] bg-[#111] flex items-center justify-center text-[#555] hover:text-white hover:border-[#555] transition-all"
                 >
                   <Icon size={13} />
                 </a>
@@ -74,13 +74,13 @@ export default function Footer() {
             <h4 className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">Contact</h4>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="flex items-center gap-2 text-sm text-[#888] hover:text-emerald-400 transition-colors mb-4"
+              className="flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors mb-4"
             >
               <Mail size={13} />{CONTACT_EMAIL}
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center text-sm font-semibold text-emerald-500 hover:text-emerald-400 transition-colors"
+              className="inline-flex items-center text-sm font-semibold text-white hover:text-[#aaa] transition-colors"
             >
               Start a project →
             </Link>
