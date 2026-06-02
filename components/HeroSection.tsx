@@ -1,45 +1,77 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-// ─── Types ───────────────────────────────────────────────────────────────────
-interface NodeDef {
-  label: string
-  radius: number   // px from centre (designed for 480px container)
-  duration: number // orbit period in seconds
-  delay: number    // negative = start mid-orbit (angle offset trick)
+// ─── Design constants ────────────────────────────────────────────────────────
+// Everything is authored for a 480 px container.
+// At runtime --s is set to the actual rendered width (with "px" unit), so
+//   calc(var(--s, 480px) * 0.XXXX)  scales every dimension proportionally.
+
+const DESIGN = 480
+
+function sc(px: number): string {
+  return `calc(var(--s, ${DESIGN}px) * ${(px / DESIGN).toFixed(4)})`
 }
+function scn(px: number): string {
+  // negative — used for "top: -radius" positioning of orbit nodes
+  return `calc(var(--s, ${DESIGN}px) * ${(-px / DESIGN).toFixed(4)})`
+}
+
+// ─── Node layout ─────────────────────────────────────────────────────────────
+// 3 rings × 2 nodes each = 6 chips, evenly staggered (180° apart per ring,
+// offset 60° between rings so no two labels ever sit at the same angle).
+//
+// Angle offset → delay = -(duration × angle / 360)
+//
+//   Ring 1 r=90  T=10s   Voice AI  @   0° (delay   0)
+//                        Lead Gen  @ 180° (delay  -5)
+//   Ring 2 r=128 T=16s   Chat AI   @  60° (delay  -2.67)
+//                        Automation@ 240° (delay -10.67)
+//   Ring 3 r=168 T=22s   Business AI@ 120° (delay  -7.33)
+//                        E-Commerce @ 300° (delay -18.33)
+
+const NODES = [
+  { label: 'Voice AI',    radius:  90, duration: 10, delay:   0     },
+  { label: 'Lead Gen',    radius:  90, duration: 10, delay:  -5     },
+  { label: 'Chat AI',     radius: 128, duration: 16, delay:  -2.67  },
+  { label: 'Automation',  radius: 128, duration: 16, delay: -10.67  },
+  { label: 'Business AI', radius: 168, duration: 22, delay:  -7.33  },
+  { label: 'E-Commerce',  radius: 168, duration: 22, delay: -18.33  },
+] as const
 
 // ─── Orbit node ──────────────────────────────────────────────────────────────
 // Two-wrapper technique:
-//  • Outer (.ai-orbit) rotates around the centre point
-//  • Inner (.ai-counter-orbit) counter-rotates so the label stays upright
-// Same duration + delay on both = they cancel → label orbits but never spins.
-function OrbitNode({ label, radius, duration, delay }: NodeDef) {
+//   • outer (.ai-orbit)         rotates clockwise
+//   • inner (.ai-counter-orbit) counter-rotates at the same rate
+// Same duration + delay → they cancel → label orbits the core but never spins.
+function OrbitNode({
+  label, radius, duration, delay,
+}: {
+  label: string; radius: number; duration: number; delay: number
+}) {
   const timing: React.CSSProperties = {
     animationDuration: `${duration}s`,
     animationDelay: `${delay}s`,
   }
   return (
     <div className="ai-orbit" style={timing}>
-      <div
-        className="ai-counter-orbit"
-        style={{ ...timing, top: -radius }}
-      >
+      <div className="ai-counter-orbit" style={{ ...timing, top: scn(radius) }}>
         <span
           style={{
             display: 'inline-block',
-            padding: '3px 11px',
+            // padding and font scale with viewport so chips stay readable
+            padding: 'clamp(2px, 0.55vw, 3px) clamp(7px, 1.9vw, 11px)',
             border: '1px solid rgba(255,255,255,0.16)',
             borderRadius: 9999,
             background: '#000',
-            fontSize: 10,
+            fontSize: 'clamp(8px, 2.3vw, 10px)',
             fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
+            letterSpacing: '0.09em',
+            textTransform: 'uppercase' as const,
             color: 'rgba(255,255,255,0.72)',
-            whiteSpace: 'nowrap',
+            whiteSpace: 'nowrap' as const,
           }}
         >
           {label}
@@ -49,16 +81,15 @@ function OrbitNode({ label, radius, duration, delay }: NodeDef) {
   )
 }
 
-// ─── Ring border (static decorative circle) ───────────────────────────────────
-function Ring({ size, opacity }: { size: number; opacity: string }) {
+// ─── Ring border ─────────────────────────────────────────────────────────────
+function Ring({ d, opacity }: { d: number; opacity: string }) {
   return (
     <div
       className="absolute rounded-full pointer-events-none"
       style={{
-        width: size,
-        height: size,
-        top: '50%',
-        left: '50%',
+        width:  sc(d),
+        height: sc(d),
+        top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         border: `1px solid rgba(255,255,255,${opacity})`,
       }}
@@ -67,56 +98,41 @@ function Ring({ size, opacity }: { size: number; opacity: string }) {
 }
 
 // ─── AI Agent Visual ──────────────────────────────────────────────────────────
-//
-// Three concentric orbit rings, each progressively shown at larger breakpoints:
-//   Ring 1 (180px Ø) — always visible, 2 nodes
-//   Ring 2 (264px Ø) — sm+ (≥640 px), 2 nodes
-//   Ring 3 (368px Ø) — lg+ (≥1024 px), 1 node
-//
-// Angle offset via negative animation-delay:
-//   Start angle θ° on a ring with period T →  delay = -(T * θ / 360)
-//
-//   Ring 1 (T=10s): Voice AI @ 0°, Lead Gen @ 180° (-5s)
-//   Ring 2 (T=16s): Chat AI @ 45° (-2s), Automation @ 225° (-10s)
-//   Ring 3 (T=24s): Business AI @ 315° (-21s)
-//
 function AIAgentVisual() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    // Set --s = actual rendered width so all sc() / scn() calls scale correctly
+    const update = () => el.style.setProperty('--s', `${el.clientWidth}px`)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
   return (
-    <div className="flex items-center justify-center w-full">
-      {/* Container — min() keeps it inside any column width */}
-      <div
-        className="relative"
-        style={{ width: 'min(480px, 88vw)', height: 'min(480px, 88vw)' }}
-      >
-        {/* ── Ring borders (decorative, non-animated) ── */}
-        <Ring size={180} opacity="0.10" />
-        <div className="hidden sm:block">
-          <Ring size={264} opacity="0.06" />
-        </div>
-        <div className="hidden lg:block">
-          <Ring size={368} opacity="0.04" />
-        </div>
+    // max-w changes by breakpoint; w-full fills the column up to that cap
+    <div className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[460px] xl:max-w-[480px] mx-auto lg:mx-0">
+      {/* Square container — --s is set here and inherited by all children */}
+      <div ref={ref} className="relative w-full aspect-square">
 
-        {/* ── Orbit nodes — Ring 1 (always) ── */}
-        <OrbitNode label="Voice AI" radius={90}  duration={10} delay={0}   />
-        <OrbitNode label="Lead Gen" radius={90}  duration={10} delay={-5}  />
+        {/* ── Decorative ring borders ── */}
+        <Ring d={180} opacity="0.10" />
+        <Ring d={256} opacity="0.07" />
+        <Ring d={336} opacity="0.04" />
 
-        {/* ── Orbit nodes — Ring 2 (sm+) ── */}
-        {/* Wrapper has display:block / none; absolute children still anchor to the relative container */}
-        <div className="hidden sm:block">
-          <OrbitNode label="Chat AI"    radius={132} duration={16} delay={-2}  />
-          <OrbitNode label="Automation" radius={132} duration={16} delay={-10} />
-        </div>
-
-        {/* ── Orbit nodes — Ring 3 (lg+) ── */}
-        <div className="hidden lg:block">
-          <OrbitNode label="Business AI" radius={184} duration={24} delay={-21} />
-        </div>
+        {/* ── All 6 orbit nodes — visible at every breakpoint ── */}
+        {NODES.map((n) => (
+          <OrbitNode key={n.label} {...n} />
+        ))}
 
         {/* ── Ambient glow (behind core) ── */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none rounded-full"
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
           style={{
-            width: 140, height: 140,
+            width: sc(140), height: sc(140),
             background: 'radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%)',
             animationName: 'aiGlowPulse',
             animationDuration: '4s',
@@ -129,12 +145,10 @@ function AIAgentVisual() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div
             style={{
-              width: 80, height: 80,
+              width: sc(80), height: sc(80),
               borderRadius: '50%',
               border: '1px solid rgba(255,255,255,0.22)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               animationName: 'aiCorePulse',
               animationDuration: '4s',
               animationTimingFunction: 'ease-in-out',
@@ -143,28 +157,25 @@ function AIAgentVisual() {
           >
             <div
               style={{
-                width: 54, height: 54,
+                width: sc(54), height: sc(54),
                 borderRadius: '50%',
                 border: '1px solid rgba(255,255,255,0.32)',
                 background: 'rgba(255,255,255,0.04)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
             >
-              <span
-                style={{
-                  fontSize: 11,
-                  fontWeight: 800,
-                  letterSpacing: '0.15em',
-                  color: 'rgba(255,255,255,0.85)',
-                }}
-              >
+              <span style={{
+                fontSize: 'clamp(8px, 2.1vw, 11px)',
+                fontWeight: 800,
+                letterSpacing: '0.15em',
+                color: 'rgba(255,255,255,0.85)',
+              }}>
                 AI
               </span>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   )
@@ -183,9 +194,9 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
-        {/* Two-column on lg+; single column (stacked) on mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 w-full">
+        {/* Two-column on lg+; single column (text then visual) on mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
 
           {/* ── Left: copy ── */}
           <div>
@@ -262,8 +273,8 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="flex items-center justify-center"
+            transition={{ duration: 1.2, delay: 0.35 }}
+            className="flex items-center justify-center lg:justify-end"
           >
             <AIAgentVisual />
           </motion.div>
