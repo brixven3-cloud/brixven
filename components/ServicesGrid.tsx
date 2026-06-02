@@ -1,12 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Globe, Smartphone, Bot, Code2, TrendingUp, Palette } from 'lucide-react'
+import { Globe, Smartphone, Bot, Code2, TrendingUp, Palette, PhoneCall, Zap, BarChart2, Lightbulb } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { SERVICES } from '@/lib/content'
 
 const iconMap: Record<string, LucideIcon> = {
-  Globe, Smartphone, Bot, Code2, TrendingUp, Palette,
+  Globe, Smartphone, Bot, Code2, TrendingUp, Palette, PhoneCall, Zap, BarChart2, Lightbulb,
 }
 
 export default function ServicesGrid() {

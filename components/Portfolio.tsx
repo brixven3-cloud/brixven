@@ -1,8 +1,41 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { PORTFOLIO } from '@/lib/content'
+
+function screenshotUrl(liveUrl: string) {
+  return `https://image.thum.io/get/width/800/crop/600/${liveUrl}`
+}
+
+function ProjectImage({ project }: { project: typeof PORTFOLIO[number] }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) {
+    return (
+      <span
+        className="relative text-4xl font-bold text-[#222] select-none"
+        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      >
+        {project.title.slice(0, 2).toUpperCase()}
+      </span>
+    )
+  }
+
+  return (
+    <Image
+      src={screenshotUrl(project.url)}
+      alt={`${project.title} website preview`}
+      fill
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  )
+}
 
 export default function Portfolio() {
   return (
@@ -36,25 +69,12 @@ export default function Portfolio() {
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="group bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:-translate-y-1 hover:border-[#333] transition-all duration-300 block"
             >
-              {/* Header strip */}
-              <div className="relative h-40 bg-[#080808] flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
-                {/* Subtle grid pattern */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
-                    backgroundSize: '20px 20px',
-                  }}
-                />
-                {/* Initials / icon */}
-                <span
-                  className="relative text-4xl font-bold text-[#222] select-none"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                >
-                  {project.title.slice(0, 2).toUpperCase()}
-                </span>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/70">
+              {/* Screenshot preview */}
+              <div className="relative h-44 bg-[#080808] flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
+                <ProjectImage project={project} />
+
+                {/* Hover overlay with arrow */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/60 z-10">
                   <div className="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white">
                     <ArrowUpRight size={18} />
                   </div>

@@ -1,6 +1,15 @@
 import type { NextConfig } from 'next'
 
-// Standard config — works out of the box on Hostinger Node.js with npm run build / npm start
-const nextConfig: NextConfig = {}
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.thum.io',
+        pathname: '/**',
+      },
+    ],
+  },
+}
 
 export default nextConfig

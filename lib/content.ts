@@ -31,8 +31,18 @@ export const SERVICES = [
   },
   {
     icon: 'Bot',
-    title: 'AI Assistants & Automation',
-    description: 'Custom AI chatbots and workflow automation that cut operational costs and free your team for higher-value work.',
+    title: 'AI Chat & Web Assistants',
+    description: 'Custom AI chatbots and GPT-powered web assistants that answer questions, qualify visitors and convert leads around the clock.',
+  },
+  {
+    icon: 'PhoneCall',
+    title: 'AI Call Agents',
+    description: 'AI voice agents that answer calls, qualify leads and book appointments 24/7 — so you never miss a customer.',
+  },
+  {
+    icon: 'Zap',
+    title: 'AI Automation & Follow-ups',
+    description: 'Automated SMS, email and WhatsApp follow-up sequences that nurture leads and re-engage customers on autopilot.',
   },
   {
     icon: 'Code2',
@@ -43,6 +53,16 @@ export const SERVICES = [
     icon: 'TrendingUp',
     title: 'SEO & Digital Marketing',
     description: 'Data-driven SEO for UK, Irish, and European markets — real rankings, qualified traffic, measurable ROI.',
+  },
+  {
+    icon: 'BarChart2',
+    title: 'Meta & Google Ads Management',
+    description: 'Targeted Facebook, Instagram and Google ad campaigns that bring in qualified leads, fully managed and optimised.',
+  },
+  {
+    icon: 'Lightbulb',
+    title: 'Marketing Strategy',
+    description: 'Data-driven growth strategy — from lead generation funnels to conversion optimisation tailored to your market.',
   },
   {
     icon: 'Palette',
