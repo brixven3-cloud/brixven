@@ -50,6 +50,39 @@ h1, h2 {
 .embla__container { display: flex; }
 .embla__slide { flex: 0 0 auto; min-width: 0; }
 
+/* ─── AI Agent Visual ─────────────────────────────────────────────────────── */
+@keyframes aiOrbit {
+  to { transform: rotate(360deg); }
+}
+@keyframes aiCounterOrbit {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(-360deg); }
+}
+@keyframes aiCorePulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.07); opacity: 0.72; }
+}
+@keyframes aiGlowPulse {
+  0%, 100% { transform: scale(1);   opacity: 0.14; }
+  50%       { transform: scale(1.3); opacity: 0.04; }
+}
+
+/* Orbit wrapper — zero-size div at centre that rotates */
+.ai-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  animation: aiOrbit linear infinite;
+}
+/* Inner node — positioned above centre, counter-rotates so label stays upright */
+.ai-counter-orbit {
+  position: absolute;
+  left: 0;
+  animation: aiCounterOrbit linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
     animation-duration: 0.01ms !important;
