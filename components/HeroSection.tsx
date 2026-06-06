@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import VoiceRobot from './VoiceRobot'
 
 // ─── Design constants ────────────────────────────────────────────────────────
 // Everything is authored for a 480 px container.
@@ -276,7 +277,7 @@ export default function HeroSection() {
             transition={{ duration: 1.2, delay: 0.35 }}
             className="flex items-center justify-center lg:justify-end"
           >
-            <AIAgentVisual />
+            <VoiceRobot />
           </motion.div>
 
         </div>
