@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
-import { CONTACT_EMAIL, COUNTRIES } from '@/lib/content'
+import { CONTACT_EMAIL } from '@/lib/content'
 import { Mail, MapPin, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contact Us | Brixven',
   description:
-    'Get in touch with Brixven. Tell us about your project — web app, mobile app, AI, or SEO. We respond within 24 hours. Based in Lahore & London.',
+    'Get in touch with Brixven. Tell us about your project — web app, mobile app, AI, or SEO. We respond within 24 hours. Based in Dublin & London.',
   alternates: { canonical: 'https://brixven.com/contact' },
   openGraph: {
     title: 'Contact Brixven — Start Your Project',
@@ -28,7 +28,7 @@ const INFO_CARDS = [
   {
     icon: MapPin,
     title: 'Our Offices',
-    content: 'Lahore, Pakistan · London, UK',
+    content: 'Dublin, Ireland · London, UK',
     isLink: false,
   },
   {
@@ -45,7 +45,7 @@ export default function ContactPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-[#555555] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-3">
+          <p className="font-mono text-[#555555] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-3">
             <span className="w-6 h-px bg-[#333333]" /> Contact Us <span className="w-6 h-px bg-[#333333]" />
           </p>
           <h1

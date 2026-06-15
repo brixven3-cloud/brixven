@@ -42,7 +42,7 @@ export default function Portfolio() {
     <section id="work" className="py-28 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-16">
-          <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+          <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> Our Work
           </p>
           <h2
@@ -52,7 +52,7 @@ export default function Portfolio() {
             Selected Projects
           </h2>
           <p className="text-[#888] text-lg">
-            A snapshot of what we build for clients across the UK, Ireland, and Europe.
+            A snapshot of what we build for clients across the UK and Ireland.
           </p>
         </div>
 

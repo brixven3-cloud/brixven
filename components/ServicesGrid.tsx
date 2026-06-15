@@ -20,7 +20,7 @@ export default function ServicesGrid() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <p className="text-[#555] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-3">
+          <p className="font-mono text-[#555] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> What We Build <span className="w-6 h-px bg-[#333]" />
           </p>
           <h2

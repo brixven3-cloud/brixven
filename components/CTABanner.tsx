@@ -25,7 +25,7 @@ export default function CTABanner() {
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
         >
-          <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-[#444] mb-6 flex items-center justify-center gap-3">
+          <p className="font-mono text-[10px] font-semibold tracking-[0.25em] uppercase text-[#444] mb-6 flex items-center justify-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> Start Today <span className="w-6 h-px bg-[#333]" />
           </p>
           <h2
@@ -56,7 +56,7 @@ export default function CTABanner() {
           </div>
 
           <p className="text-[#444] text-xs mt-8 tracking-wide">
-            No commitment required · Response within 24 hours · UK, Ireland &amp; Europe
+            No commitment required · Response within 24 hours · UK &amp; Ireland
           </p>
         </motion.div>
       </div>

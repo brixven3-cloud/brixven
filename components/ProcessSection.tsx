@@ -8,7 +8,7 @@ export default function ProcessSection() {
     <section id="process" className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-14 sm:mb-16">
-          <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center justify-center gap-3">
+          <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center justify-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> How We Work <span className="w-6 h-px bg-[#333]" />
           </p>
           <h2

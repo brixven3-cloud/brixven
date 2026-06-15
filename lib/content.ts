@@ -1,10 +1,11 @@
 // ─── Edit all site copy from here ─────────────────────────────────────────────
 
 export const CONTACT_EMAIL = 'info@brixven.com'
-export const COUNTRIES = ['Pakistan', 'United Kingdom', 'Ireland']
+export const COUNTRIES = ['United Kingdom', 'Ireland']
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/#services' },
+  { label: 'Packages', href: '/#packages' },
   { label: 'Work',     href: '/#work' },
   { label: 'About',   href: '/#about' },
   { label: 'Process', href: '/#process' },
@@ -12,8 +13,8 @@ export const NAV_LINKS = [
 ]
 
 export const STATS = [
-  { value: '5+',         label: 'Years Delivering Software' },
-  { value: 'UK · IE · EU', label: 'Markets Served' },
+  { value: '14-Day',     label: 'Average Build' },
+  { value: 'UK · IE',    label: 'Markets Served' },
   { value: '24h',        label: 'Response Guarantee' },
   { value: 'Full Stack', label: 'End-to-End Capability' },
 ]
@@ -22,7 +23,7 @@ export const SERVICES = [
   {
     icon: 'Globe',
     title: 'Web App Development',
-    description: 'Full-stack web applications built with modern frameworks — fast, secure, and ready to scale across UK, Irish, and European markets.',
+    description: 'Full-stack web applications built with modern frameworks — fast, secure, and ready to scale across UK and Irish markets.',
   },
   {
     icon: 'Smartphone',
@@ -52,7 +53,7 @@ export const SERVICES = [
   {
     icon: 'TrendingUp',
     title: 'SEO & Digital Marketing',
-    description: 'Data-driven SEO for UK, Irish, and European markets — real rankings, qualified traffic, measurable ROI.',
+    description: 'Data-driven SEO for UK and Irish markets — real rankings, qualified traffic, measurable ROI.',
   },
   {
     icon: 'BarChart2',
@@ -81,8 +82,8 @@ export const WHY_BRIXVEN = [
     description: 'We leverage cutting-edge AI tooling to deliver faster, smarter results without compromising quality.',
   },
   {
-    title: 'UK, Ireland & Europe reach',
-    description: 'Deep understanding of Western European market dynamics, regulations, and user expectations.',
+    title: 'UK & Ireland reach',
+    description: 'Deep understanding of UK and Irish market dynamics, regulations, and user expectations.',
   },
   {
     title: 'End-to-end ownership',
@@ -166,7 +167,7 @@ export const SEO_FEATURES = [
   {
     icon: 'Search',
     title: 'Keyword Research',
-    description: 'Deep research into UK, Irish, and European search intent, volume, and competitive landscape.',
+    description: 'Deep research into UK and Irish search intent, volume, and competitive landscape.',
   },
   {
     icon: 'FileText',
@@ -214,10 +215,10 @@ export const TESTIMONIALS = [
   },
   {
     quote: 'The AI assistant they built handles 70% of our support queries automatically. ROI was visible within the first month.',
-    name: 'European SaaS Business',
-    role: 'Operations Lead',
-    flag: '🇪🇺',
-    avatar: 'EU',
+    name: 'UK Professional Services Firm',
+    role: 'Managing Director',
+    flag: '🇬🇧',
+    avatar: 'UK',
   },
 ]
 
@@ -226,12 +227,11 @@ export const TEAM = [
   {
     name: 'Muhammad Hamza',
     role: 'Founder & Lead Engineer',
-    bio: 'Hamza founded Brixven to bring world-class software delivery to UK, Irish, and European businesses. He leads every engagement personally, backed by a curated network of specialist engineers and the latest AI tooling.',
+    bio: 'Hamza founded Brixven to bring world-class software delivery to UK and Irish businesses. He leads every engagement personally, backed by a curated network of specialist engineers and the latest AI tooling.',
     photo: '/team/hamza.jpg',
     initials: 'MH',
-    linkedin: '#',
-    twitter: '#',
-    flag: '🇵🇰',
+    linkedin: 'https://www.linkedin.com/company/brixven/',
+    instagram: 'https://www.instagram.com/brix_ven?igsh=MTc3N2J1a214NXA1dg==',
   },
 ]
 
@@ -255,3 +255,41 @@ export const FOOTER_LINKS = {
     { label: 'Terms of Service', href: '/terms' },
   ],
 }
+
+// Social profiles — used in Footer and TeamSection
+export const SOCIALS = {
+  linkedin: 'https://www.linkedin.com/company/brixven/',
+  facebook: 'https://www.facebook.com/share/1EjuURpV2Z/',
+  instagram: 'https://www.instagram.com/brix_ven?igsh=MTc3N2J1a214NXA1dg==',
+  threads: 'https://www.threads.com/@brix_ven',
+}
+
+// ─── Hot-Sale Packages ──────────────────────────────────────────────────────
+export const PACKAGES = [
+  {
+    title: 'E-Commerce Website',
+    tagline: 'Complete Store — £480 launch offer',
+    description: 'A fully built online store, ready to launch — product catalogue, cart, secure checkout and payment integration included.',
+    image: '/packages/ecommerce.jpeg',
+    cta: 'Order this package →',
+    message: 'Hi Brixven 👋 I want to order the *E-commerce Website* package (£480 launch offer). Please share the next steps.',
+  },
+  {
+    title: 'AI Voice Agents',
+    tagline: 'Starter £120 · Growth £190 · Pro £290',
+    description: 'AI voice agents that answer calls, qualify leads and book appointments around the clock — pick the plan that fits your business.',
+    image: '/packages/voice-agents.jpeg',
+    cta: 'Book a demo →',
+    message: "Hi Brixven 👋 I'm interested in the *AI Voice Agents* package. Which plan fits me — Starter (£120), Growth (£190) or Pro (£290)?",
+  },
+  {
+    title: 'Meta Ads Management',
+    tagline: 'Leads · Growth · Scale',
+    description: 'Fully managed Facebook & Instagram ad campaigns built to bring in qualified leads — starting with a free ads audit.',
+    image: '/packages/meta-ads.jpeg',
+    cta: 'Get free audit →',
+    message: "Hi Brixven 👋 I'm interested in the *Meta Ads Management* package. I'd like my free ads audit.",
+  },
+]
+
+export const CUSTOM_PACKAGE_MESSAGE = "Hi Brixven 👋 I'd like a *custom package / quote*. Here's what I need: "

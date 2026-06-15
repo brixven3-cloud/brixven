@@ -12,8 +12,8 @@ export default function SEOServices() {
     <section id="seo" className="py-28 bg-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-16">
-          <div className="inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-[#888] mb-4">
-            🇬🇧 UK &amp; 🇮🇪 Ireland &amp; 🇪🇺 Europe
+          <div className="font-mono inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-[#888] mb-4">
+            🇬🇧 UK &amp; 🇮🇪 Ireland
           </div>
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-[1.1]"
@@ -23,8 +23,8 @@ export default function SEOServices() {
             <em style={{ fontStyle: 'italic' }}>Moves the Needle</em>
           </h2>
           <p className="text-[#888] text-lg leading-relaxed">
-            Local expertise, international standards. We rank businesses across UK, Ireland,
-            and European markets with strategies built for each audience.
+            Local expertise, international standards. We rank businesses across the UK and
+            Ireland with strategies built for each audience.
           </p>
         </div>
 

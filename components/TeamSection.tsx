@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Linkedin, Twitter, Zap } from 'lucide-react'
+import { Linkedin, Instagram, Zap } from 'lucide-react'
 import { TEAM } from '@/lib/content'
 
 export default function TeamSection() {
@@ -20,7 +20,7 @@ export default function TeamSection() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55 }}
           >
-            <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
               <span className="w-6 h-px bg-[#333]" /> The Studio
             </p>
             <h2
@@ -45,7 +45,7 @@ export default function TeamSection() {
                 { icon: Zap, text: 'AI-accelerated delivery' },
                 { icon: Zap, text: 'Senior-only talent' },
                 { icon: Zap, text: 'Direct founder access' },
-                { icon: Zap, text: 'UK · IE · EU market depth' },
+                { icon: Zap, text: 'UK & Ireland market depth' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2.5 text-sm text-[#8899aa]">
                   <div className="w-5 h-5 rounded-full bg-[#111] border border-[#222] flex items-center justify-center flex-shrink-0">
@@ -80,7 +80,6 @@ export default function TeamSection() {
                       {founder.initials}
                     </div>
                   )}
-                  <div className="absolute top-4 right-4 text-xl">{founder.flag}</div>
                   <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
                 </div>
 
@@ -91,17 +90,21 @@ export default function TeamSection() {
                   <div className="flex gap-2 pt-4 border-t border-[#1a1a1a]">
                     <a
                       href={founder.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label={`${founder.name} on LinkedIn`}
                       className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
                     >
                       <Linkedin size={13} />
                     </a>
                     <a
-                      href={founder.twitter}
-                      aria-label={`${founder.name} on X / Twitter`}
+                      href={founder.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${founder.name} on Instagram`}
                       className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
                     >
-                      <Twitter size={13} />
+                      <Instagram size={13} />
                     </a>
                   </div>
                 </div>

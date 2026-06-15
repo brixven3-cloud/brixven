@@ -209,7 +209,7 @@ export default function HeroSection() {
             >
               <span className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#2a2a2a] bg-[#0a0a0a] text-white text-xs font-medium">
                 <span className="w-1.5 h-1.5 rounded-full bg-white inline-block" />
-                UK · Ireland · Europe · Pakistan
+                UK · Ireland
                 <ArrowRight size={11} className="text-[#555]" />
               </span>
             </motion.div>
@@ -235,7 +235,7 @@ export default function HeroSection() {
               className="text-[#888] text-lg leading-relaxed mb-10 max-w-lg"
             >
               Web apps, mobile apps, AI assistants &amp; expert SEO —
-              serving growing businesses across the UK, Ireland, and Europe.
+              serving growing businesses across the UK &amp; Ireland.
             </motion.p>
 
             <motion.div
@@ -264,7 +264,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap items-center gap-6"
             >
-              {['🇬🇧 UK', '🇮🇪 Ireland', '🇪🇺 Europe', '⭐ 5-star rated'].map((item) => (
+              {['🇬🇧 United Kingdom', '🇮🇪 Ireland'].map((item) => (
                 <span key={item} className="text-xs text-[#555] font-medium">{item}</span>
               ))}
             </motion.div>

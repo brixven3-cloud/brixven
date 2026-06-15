@@ -60,7 +60,7 @@ export default function WhyChoose() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55 }}
           >
-            <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
               <span className="w-6 h-px bg-[#333]" /> Why Brixven
             </p>
             <h2

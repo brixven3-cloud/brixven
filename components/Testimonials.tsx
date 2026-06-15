@@ -28,7 +28,7 @@ export default function Testimonials() {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10"
         >
           <div className="max-w-xl">
-            <p className="text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+            <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
               <span className="w-6 h-px bg-[#333]" /> Client Experience
             </p>
             <h2

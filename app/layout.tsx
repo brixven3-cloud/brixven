@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,6 +19,13 @@ const playfair = Playfair_Display({
   weight: ['400', '700', '800', '900'],
 })
 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
+  weight: ['500', '700'],
+})
+
 const BASE_URL = 'https://brixven.com'
 
 export const metadata: Metadata = {
@@ -27,11 +35,11 @@ export const metadata: Metadata = {
     template: '%s | Brixven',
   },
   description:
-    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
+    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland.',
   keywords: [
     'software development UK', 'software development Ireland', 'web development Dublin',
     'web design Ireland', 'digital agency Ireland', 'digital agency Dublin',
-    'web app development Europe', 'mobile app development', 'AI assistants',
+    'web app development UK', 'mobile app development', 'AI assistants',
     'custom software', 'SEO UK', 'SEO Ireland', 'Dublin web agency',
     'software agency London', 'software agency Dublin', 'Brixven', 'Muhammad Hamza',
   ],
@@ -46,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Brixven — Software for Your Business',
     description:
-      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
+      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland.',
     url: BASE_URL,
     siteName: 'Brixven',
     type: 'website',
@@ -55,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Brixven — Software for Your Business',
-    description: 'Web apps · Mobile apps · AI · SEO — UK, Ireland & Europe.',
+    description: 'Web apps · Mobile apps · AI · SEO — UK & Ireland.',
     creator: '@brixven',
   },
 }
@@ -67,7 +75,7 @@ const organizationSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
   description:
-    'Founder-led software studio providing web apps, mobile apps, AI assistants, custom software, and SEO for UK, Irish, and European businesses.',
+    'Founder-led software studio providing web apps, mobile apps, AI assistants, custom software, and SEO for UK and Irish businesses.',
   foundingDate: '2020',
   founder: {
     '@type': 'Person',
@@ -78,14 +86,18 @@ const organizationSchema = {
     '@type': 'ContactPoint',
     email: 'info@brixven.com',
     contactType: 'customer support',
-    areaServed: ['PK', 'GB', 'IE'],
-    availableLanguage: ['English', 'Urdu'],
+    areaServed: ['GB', 'IE'],
+    availableLanguage: ['English'],
   },
-  sameAs: ['https://linkedin.com/company/brixven', 'https://twitter.com/brixven'],
+  sameAs: [
+    'https://www.linkedin.com/company/brixven/',
+    'https://www.facebook.com/share/1EjuURpV2Z/',
+    'https://www.instagram.com/brix_ven',
+    'https://www.threads.com/@brix_ven',
+  ],
   address: [
     { '@type': 'PostalAddress', addressLocality: 'Dublin', addressCountry: 'IE' },
     { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
-    { '@type': 'PostalAddress', addressLocality: 'Lahore', addressCountry: 'PK' },
   ],
 }
 
@@ -97,14 +109,13 @@ const serviceSchema = {
   areaServed: [
     { '@type': 'Country', name: 'United Kingdom' },
     { '@type': 'Country', name: 'Ireland' },
-    { '@type': 'Country', name: 'Pakistan' },
   ],
-  description: 'Full-stack digital services for growing businesses across UK, Ireland, and Europe.',
+  description: 'Full-stack digital services for growing businesses across the UK and Ireland.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -116,9 +127,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   )

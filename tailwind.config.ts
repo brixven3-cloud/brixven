@@ -11,6 +11,7 @@ const config: Config = {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        mono: ['var(--font-jetbrains-mono)', '"JetBrains Mono"', 'monospace'],
       },
       colors: {
         cream: '#F9F8F5',
@@ -20,6 +21,7 @@ const config: Config = {
         'gold-dark': '#B8933B',
         muted: '#6B6B6B',
         'warm-border': '#E8E4DC',
+        accent: '#FF3B30',
         brand: {
           blue: '#2563EB',
           indigo: '#4F46E5',

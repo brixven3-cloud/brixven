@@ -47,7 +47,7 @@ export default async function OGImage() {
         </div>
 
         <div style={{ display: 'flex', gap: 16 }}>
-          {['🇵🇰 Pakistan', '🇬🇧 United Kingdom', '⭐ 5-star rated'].map((b) => (
+          {['🇬🇧 United Kingdom', '🇮🇪 Ireland'].map((b) => (
             <div
               key={b}
               style={{

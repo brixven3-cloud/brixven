@@ -1,59 +1,86 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2, Send, Loader2 } from 'lucide-react'
+import { CheckCircle2, MessageCircle } from 'lucide-react'
+import { waLink } from '@/lib/whatsapp'
+import { SERVICES } from '@/lib/content'
 
-type Status = 'idle' | 'loading' | 'success' | 'error'
-interface FormState { name: string; email: string; company: string; message: string }
-const INITIAL: FormState = { name: '', email: '', company: '', message: '' }
+type Status = 'idle' | 'sent'
+
+interface FormState {
+  name: string
+  email: string
+  phone: string
+  company: string
+  service: string
+  budget: string
+  message: string
+}
+
+const INITIAL: FormState = {
+  name: '', email: '', phone: '', company: '', service: '', budget: '', message: '',
+}
+
+const BUDGET_OPTIONS = [
+  'Under £500',
+  '£500 – £1,000',
+  '£1,000 – £5,000',
+  '£5,000 – £10,000',
+  '£10,000+',
+]
+
+function buildMessage(form: FormState): string {
+  const lines = ['New enquiry from brixven.com', '', `Name: ${form.name}`, `Email: ${form.email}`]
+  if (form.phone) lines.push(`Phone: ${form.phone}`)
+  if (form.company) lines.push(`Company: ${form.company}`)
+  if (form.service) lines.push(`Service: ${form.service}`)
+  if (form.budget) lines.push(`Budget: ${form.budget}`)
+  lines.push(`Message: ${form.message}`)
+  return lines.join('\n')
+}
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL)
   const [status, setStatus] = useState<Status>('idle')
-  const [serverMsg, setServerMsg] = useState('')
+  const [waUrl, setWaUrl] = useState('')
 
   function update(field: keyof FormState) {
-    return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setStatus('loading')
-    setServerMsg('')
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      const data = await res.json()
-      if (data.success) {
-        setStatus('success')
-        setServerMsg(data.message)
-        setForm(INITIAL)
-      } else {
-        setStatus('error')
-        setServerMsg(data.error ?? 'Something went wrong. Please try again.')
-      }
-    } catch {
-      setStatus('error')
-      setServerMsg('Network error. Please check your connection.')
-    }
+    const url = waLink(buildMessage(form))
+    setWaUrl(url)
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setStatus('sent')
+    setForm(INITIAL)
   }
 
   const labelClass = 'block text-[#888888] text-xs font-semibold mb-1.5 tracking-wide uppercase'
   const inputClass =
     'w-full bg-[#0a0a0a] border border-[#222222] px-4 py-3 text-white placeholder-[#444444] text-sm focus:outline-none focus:border-white transition-all duration-200'
 
-  if (status === 'success') {
+  if (status === 'sent') {
     return (
       <div className="bg-[#0a0a0a] border border-[#1a1a1a] p-8 sm:p-10 flex flex-col items-center text-center gap-5 min-h-[280px] sm:min-h-[380px] justify-center">
         <div className="w-16 h-16 border border-[#222222] flex items-center justify-center">
           <CheckCircle2 size={28} className="text-white" />
         </div>
-        <h3 className="text-white text-xl font-bold">Message Sent!</h3>
-        <p className="text-[#888888] text-sm max-w-xs leading-relaxed">{serverMsg}</p>
+        <h3 className="text-white text-xl font-bold">Opening WhatsApp…</h3>
+        <p className="text-[#888888] text-sm max-w-xs leading-relaxed">
+          We&apos;ve pre-filled your message in WhatsApp. If it didn&apos;t open automatically,
+          tap the button below.
+        </p>
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors"
+        >
+          Open WhatsApp →
+        </a>
         <button
           onClick={() => setStatus('idle')}
           className="text-[#888888] text-sm hover:text-white transition-colors mt-1"
@@ -88,13 +115,44 @@ export default function ContactForm() {
         </div>
       </div>
 
-      <div>
-        <label className={labelClass}>Company</label>
-        <input
-          type="text" placeholder="Acme Corp (optional)"
-          value={form.company} onChange={update('company')}
-          className={inputClass}
-        />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label className={labelClass}>Phone</label>
+          <input
+            type="tel" placeholder="+44 7700 900000 (optional)"
+            value={form.phone} onChange={update('phone')}
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label className={labelClass}>Company</label>
+          <input
+            type="text" placeholder="Acme Corp (optional)"
+            value={form.company} onChange={update('company')}
+            className={inputClass}
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label className={labelClass}>Service</label>
+          <select value={form.service} onChange={update('service')} className={inputClass}>
+            <option value="">Select a service (optional)</option>
+            {SERVICES.map((svc) => (
+              <option key={svc.title} value={svc.title}>{svc.title}</option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={labelClass}>Budget</label>
+          <select value={form.budget} onChange={update('budget')} className={inputClass}>
+            <option value="">Select a budget (optional)</option>
+            {BUDGET_OPTIONS.map((b) => (
+              <option key={b} value={b}>{b}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div>
@@ -107,24 +165,15 @@ export default function ContactForm() {
         />
       </div>
 
-      {status === 'error' && (
-        <p className="text-red-400 text-sm">{serverMsg}</p>
-      )}
-
       <button
         type="submit"
-        disabled={status === 'loading'}
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors"
       >
-        {status === 'loading' ? (
-          <><Loader2 size={15} className="animate-spin" /> Sending…</>
-        ) : (
-          <><Send size={14} /> Send Message</>
-        )}
+        <MessageCircle size={14} /> Send via WhatsApp
       </button>
 
       <p className="text-[#444444] text-xs text-center">
-        We respond within 24 hours. No spam, ever.
+        Opens WhatsApp with your message pre-filled. We respond within 24 hours.
       </p>
     </form>
   )

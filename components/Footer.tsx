@@ -1,19 +1,37 @@
 import Link from 'next/link'
-import { Twitter, Linkedin, Github, Instagram, Mail } from 'lucide-react'
-import { CONTACT_EMAIL, FOOTER_LINKS } from '@/lib/content'
+import { Linkedin, Facebook, Instagram, Mail } from 'lucide-react'
+import { CONTACT_EMAIL, FOOTER_LINKS, SOCIALS } from '@/lib/content'
 import Logo from './Logo'
 
-const SOCIALS = [
-  { label: 'Twitter / X', href: '#', Icon: Twitter },
-  { label: 'LinkedIn',    href: '#', Icon: Linkedin },
-  { label: 'GitHub',      href: '#', Icon: Github },
-  { label: 'Instagram',   href: '#', Icon: Instagram },
+function ThreadsIcon({ size = 13 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 2c-4.5 0-7.5 3-7.5 7.5v5C4.5 19 7.5 22 12 22s7.5-3 7.5-7.5" />
+      <path d="M12 9.5c2.5 0 4 1.2 4 3s-1.5 3-4 3-3.5-1.3-3.5-3" />
+    </svg>
+  )
+}
+
+const FOOTER_SOCIALS = [
+  { label: 'LinkedIn',  href: SOCIALS.linkedin,  Icon: Linkedin },
+  { label: 'Facebook',  href: SOCIALS.facebook,  Icon: Facebook },
+  { label: 'Instagram', href: SOCIALS.instagram, Icon: Instagram },
+  { label: 'Threads',   href: SOCIALS.threads,   Icon: ThreadsIcon },
 ]
 
 const OFFICES = [
   { city: 'Dublin, Ireland',        flag: '🇮🇪' },
   { city: 'London, United Kingdom', flag: '🇬🇧' },
-  { city: 'Lahore, Pakistan',       flag: '🇵🇰' },
 ]
 
 export default function Footer() {
@@ -30,7 +48,7 @@ export default function Footer() {
             </div>
             <p className="text-[#888] text-sm leading-relaxed max-w-[260px] mb-5">
               Founder-led software studio building web apps, mobile apps, AI solutions, and
-              expert SEO for UK, Irish, and European businesses.
+              expert SEO for UK &amp; Irish businesses.
             </p>
             <div className="space-y-1.5 mb-6">
               {OFFICES.map((o) => (
@@ -40,10 +58,12 @@ export default function Footer() {
               ))}
             </div>
             <div className="flex gap-2">
-              {SOCIALS.map(({ label, href, Icon }) => (
+              {FOOTER_SOCIALS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-8 h-8 border border-[#222] bg-[#111] flex items-center justify-center text-[#555] hover:text-white hover:border-[#555] transition-all"
                 >
@@ -56,7 +76,7 @@ export default function Footer() {
           {/* Link columns */}
           {(Object.entries(FOOTER_LINKS) as [string, { label: string; href: string }[]][]).map(([section, links]) => (
             <div key={section} className="md:col-span-2">
-              <h4 className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">{section}</h4>
+              <h4 className="font-mono text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">{section}</h4>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -71,7 +91,7 @@ export default function Footer() {
 
           {/* Contact column */}
           <div className="md:col-span-2">
-            <h4 className="text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">Contact</h4>
+            <h4 className="font-mono text-white text-[10px] font-bold tracking-[0.2em] uppercase mb-5">Contact</h4>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="flex items-center gap-2 text-sm text-[#888] hover:text-white transition-colors mb-4"
@@ -89,7 +109,7 @@ export default function Footer() {
 
         <div className="border-t border-[#1a1a1a] pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[#444] text-xs tracking-wide">© {year} Brixven. All rights reserved.</p>
-          <p className="text-[#444] text-xs tracking-wide">Ireland 🇮🇪 · United Kingdom 🇬🇧 · Pakistan 🇵🇰</p>
+          <p className="text-[#444] text-xs tracking-wide">Ireland 🇮🇪 · United Kingdom 🇬🇧</p>
         </div>
       </div>
     </footer>

@@ -4,12 +4,12 @@ import HeroSection from '@/components/HeroSection'
 export const metadata: Metadata = {
   title: 'Brixven — Software for Your Business',
   description:
-    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe. Founder-led digital studio.',
+    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland. Founder-led digital studio.',
   alternates: { canonical: 'https://brixven.com' },
   openGraph: {
     title: 'Brixven — Digital Products Built to Scale',
     description:
-      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK, Ireland, and Europe.',
+      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland.',
     url: 'https://brixven.com',
     type: 'website',
   },
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 
 import StatsStrip from '@/components/StatsStrip'
 import ServicesGrid from '@/components/ServicesGrid'
+import PackagesSection from '@/components/PackagesSection'
 import WhyChoose from '@/components/WhyChoose'
 import ProcessSection from '@/components/ProcessSection'
 import Portfolio from '@/components/Portfolio'
@@ -32,6 +33,7 @@ export default function Home() {
       <HeroSection />
       <StatsStrip />
       <ServicesGrid />
+      <PackagesSection />
       <WhyChoose />
       <ProcessSection />
       <Portfolio />

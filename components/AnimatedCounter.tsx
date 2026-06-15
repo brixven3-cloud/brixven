@@ -13,17 +13,20 @@ export default function AnimatedCounter({
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
 
+  // Always start with the real target value so SSR/slow-JS users never see a bare "0".
+  const [display, setDisplay] = useState(value)
+
   const numMatch = value.match(/^(\d+)(.*)$/)
-  const [display, setDisplay] = useState(numMatch ? '0' + numMatch[2] : value)
 
   useEffect(() => {
-    if (!inView) return
-    if (!numMatch) { setDisplay(value); return }
+    if (!inView || !numMatch) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const target = parseInt(numMatch[1])
     const suffix = numMatch[2]
     const start = performance.now()
 
+    setDisplay('0' + suffix)
     const frame = (now: number) => {
       const t = Math.min((now - start) / (duration * 1000), 1)
       const ease = 1 - Math.pow(1 - t, 3)
