@@ -1,10 +1,37 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { PACKAGES, CUSTOM_PACKAGE_MESSAGE } from '@/lib/content'
 import { waLink } from '@/lib/whatsapp'
 import { Reveal, StaggerGroup, StaggerItem } from './motion'
+
+function PackageImage({ pkg }: { pkg: typeof PACKAGES[number] }) {
+  const [failed, setFailed] = useState(false)
+
+  if (failed) {
+    return (
+      <span
+        className="relative text-4xl font-bold text-[#222] select-none"
+        style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      >
+        {pkg.title.slice(0, 2).toUpperCase()}
+      </span>
+    )
+  }
+
+  return (
+    <Image
+      src={pkg.image}
+      alt={`${pkg.title} package — Brixven, UK & Ireland`}
+      fill
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      className="object-cover transition-transform duration-500 group-hover:scale-105"
+      onError={() => setFailed(true)}
+    />
+  )
+}
 
 export default function PackagesSection() {
   return (
@@ -30,14 +57,8 @@ export default function PackagesSection() {
               hover
               className="group bg-black border border-[#1a1a1a] overflow-hidden transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)]"
             >
-              <div className="relative aspect-[4/5] bg-[#080808] overflow-hidden">
-                <Image
-                  src={pkg.image}
-                  alt={`${pkg.title} package — Brixven, UK & Ireland`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              <div className="relative aspect-[4/5] bg-[#080808] overflow-hidden flex items-center justify-center">
+                <PackageImage pkg={pkg} />
               </div>
               <div className="p-6">
                 <h3 className="text-white font-bold text-lg mb-1">{pkg.title}</h3>
