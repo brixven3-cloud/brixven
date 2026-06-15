@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Linkedin, Facebook, Instagram, Mail } from 'lucide-react'
 import { CONTACT_EMAIL, FOOTER_LINKS, SOCIALS } from '@/lib/content'
 import Logo from './Logo'
+import { Reveal } from './motion'
 
 function ThreadsIcon({ size = 13 }: { size?: number }) {
   return (
@@ -38,7 +39,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="bg-black border-t border-[#1a1a1a]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
+      <Reveal className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-14">
 
           {/* Brand column */}
@@ -111,7 +112,7 @@ export default function Footer() {
           <p className="text-[#444] text-xs tracking-wide">© {year} Brixven. All rights reserved.</p>
           <p className="text-[#444] text-xs tracking-wide">Ireland 🇮🇪 · United Kingdom 🇬🇧</p>
         </div>
-      </div>
+      </Reveal>
     </footer>
   )
 }

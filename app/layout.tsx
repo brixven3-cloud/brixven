@@ -47,7 +47,14 @@ export const metadata: Metadata = {
   creator: 'Brixven',
   robots: { index: true, follow: true },
   icons: { icon: '/icon.svg', apple: '/icon.svg' },
-  alternates: { canonical: BASE_URL },
+  alternates: {
+    canonical: BASE_URL,
+    languages: {
+      'en-GB': BASE_URL,
+      'en-IE': BASE_URL,
+      'x-default': BASE_URL,
+    },
+  },
   verification: {
     google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
   },
@@ -101,21 +108,44 @@ const organizationSchema = {
   ],
 }
 
-const serviceSchema = {
+const professionalServiceSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  provider: { '@type': 'Organization', name: 'Brixven' },
-  serviceType: ['Web Application Development', 'Mobile App Development', 'AI Automation', 'SEO Services', 'UI/UX Design'],
+  '@type': 'ProfessionalService',
+  name: 'Brixven',
+  url: BASE_URL,
+  image: `${BASE_URL}/icon.svg`,
+  priceRange: '£££',
+  description:
+    'Full-stack digital services for growing businesses across the UK and Ireland — AI voice agents, web development, mobile apps, business automation, and paid ads management.',
+  serviceType: [
+    'AI Voice Agents',
+    'Web Application Development',
+    'Mobile App Development',
+    'Business Automation',
+    'Meta & Google Ads Management',
+    'SEO Services',
+    'Custom Software Development',
+    'UI/UX Design',
+  ],
   areaServed: [
     { '@type': 'Country', name: 'United Kingdom' },
     { '@type': 'Country', name: 'Ireland' },
   ],
-  description: 'Full-stack digital services for growing businesses across the UK and Ireland.',
+  address: [
+    { '@type': 'PostalAddress', addressLocality: 'Dublin', addressCountry: 'IE' },
+    { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/company/brixven/',
+    'https://www.facebook.com/share/1EjuURpV2Z/',
+    'https://www.instagram.com/brix_ven',
+    'https://www.threads.com/@brix_ven',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en-GB" className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -123,7 +153,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
         />
       </head>
       <body>

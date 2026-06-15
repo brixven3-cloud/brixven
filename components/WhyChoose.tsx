@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { WHY_BRIXVEN } from '@/lib/content'
+import { Reveal, SplitLines, StaggerGroup, StaggerItem, Parallax } from './motion'
 
 function DashboardIllustration() {
   return (
@@ -54,53 +54,47 @@ export default function WhyChoose() {
     <section id="about" className="py-28 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55 }}
-          >
-            <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
-              <span className="w-6 h-px bg-[#333]" /> Why Brixven
-            </p>
-            <h2
+          <div>
+            <Reveal>
+              <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+                <span className="w-6 h-px bg-[#333]" /> Why Brixven
+              </p>
+            </Reveal>
+
+            <SplitLines
+              as="h2"
               className="text-4xl sm:text-5xl font-bold text-white mb-5 leading-[1.1]"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-            >
-              A Partner You Can<br />
-              Actually <em style={{ fontStyle: 'italic' }}>Rely On</em>
-            </h2>
-            <p className="text-[#888] text-lg mb-10 leading-relaxed">
-              Founder-led, AI-augmented — working as an extension of your team, not as a faceless agency.
-            </p>
-            <ul className="space-y-6">
-              {WHY_BRIXVEN.map((item, i) => (
-                <motion.li
-                  key={item.title}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.07 }}
-                  className="flex gap-4"
-                >
+              lines={[
+                'A Partner You Can',
+                <span key="accent">Actually <em style={{ fontStyle: 'italic' }}>Rely On</em></span>,
+              ]}
+            />
+
+            <Reveal delay={0.1}>
+              <p className="text-[#888] text-lg mb-10 leading-relaxed">
+                Founder-led, AI-augmented — working as an extension of your team, not as a faceless agency.
+              </p>
+            </Reveal>
+
+            <StaggerGroup className="space-y-6" stagger={0.08}>
+              {WHY_BRIXVEN.map((item) => (
+                <StaggerItem key={item.title} className="flex gap-4">
                   <CheckCircle2 size={18} className="text-white flex-shrink-0 mt-0.5" strokeWidth={2} />
                   <div>
                     <p className="text-white font-semibold text-base mb-0.5">{item.title}</p>
                     <p className="text-[#888] text-sm leading-relaxed">{item.description}</p>
                   </div>
-                </motion.li>
+                </StaggerItem>
               ))}
-            </ul>
-          </motion.div>
+            </StaggerGroup>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <DashboardIllustration />
-          </motion.div>
+          <Reveal delay={0.1}>
+            <Parallax speed={0.08}>
+              <DashboardIllustration />
+            </Parallax>
+          </Reveal>
         </div>
       </div>
     </section>

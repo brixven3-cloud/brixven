@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { Linkedin, Instagram, Zap } from 'lucide-react'
 import { TEAM } from '@/lib/content'
+import { Reveal, SplitLines, StaggerGroup, StaggerItem } from './motion'
 
 export default function TeamSection() {
   const founder = TEAM[0]
@@ -14,63 +14,63 @@ export default function TeamSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           {/* Left: positioning copy */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.55 }}
-          >
-            <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
-              <span className="w-6 h-px bg-[#333]" /> The Studio
-            </p>
-            <h2
+          <div>
+            <Reveal>
+              <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
+                <span className="w-6 h-px bg-[#333]" /> The Studio
+              </p>
+            </Reveal>
+
+            <SplitLines
+              as="h2"
               className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-[1.1]"
               style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-            >
-              Founder-Led,<br />
-              <em style={{ fontStyle: 'italic', color: '#cccccc' }}>AI-Augmented</em>
-            </h2>
-            <p className="text-[#888] text-lg leading-relaxed mb-6">
-              Brixven operates as a focused studio — not a 200-person agency with layers of
-              account managers. You work directly with the decision-maker.
-            </p>
-            <p className="text-[#888] text-base leading-relaxed mb-8">
-              Every engagement is personally led by Hamza, supported by a curated network of
-              specialist engineers, designers, and growth experts — and the latest AI tooling —
-              to deliver enterprise-quality output efficiently.
-            </p>
+              lines={[
+                'Founder-Led,',
+                <em key="accent" style={{ fontStyle: 'italic', color: '#cccccc' }}>AI-Augmented</em>,
+              ]}
+            />
 
-            <div className="grid grid-cols-2 gap-4">
+            <Reveal delay={0.1}>
+              <p className="text-[#888] text-lg leading-relaxed mb-6">
+                Brixven operates as a focused studio — not a 200-person agency with layers of
+                account managers. You work directly with the decision-maker.
+              </p>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <p className="text-[#888] text-base leading-relaxed mb-8">
+                Every engagement is personally led by Hamza, supported by a curated network of
+                specialist engineers, designers, and growth experts — and the latest AI tooling —
+                to deliver enterprise-quality output efficiently.
+              </p>
+            </Reveal>
+
+            <StaggerGroup className="grid grid-cols-2 gap-4" stagger={0.06}>
               {[
                 { icon: Zap, text: 'AI-accelerated delivery' },
                 { icon: Zap, text: 'Senior-only talent' },
                 { icon: Zap, text: 'Direct founder access' },
                 { icon: Zap, text: 'UK & Ireland market depth' },
               ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2.5 text-sm text-[#8899aa]">
+                <StaggerItem key={text} className="flex items-center gap-2.5 text-sm text-[#8899aa]">
                   <div className="w-5 h-5 rounded-full bg-[#111] border border-[#222] flex items-center justify-center flex-shrink-0">
                     <Icon size={11} className="text-white" />
                   </div>
                   {text}
-                </div>
+                </StaggerItem>
               ))}
-            </div>
-          </motion.div>
+            </StaggerGroup>
+          </div>
 
           {/* Right: founder card */}
           {founder && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
+            <Reveal delay={0.15}>
               <div className="bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden max-w-sm">
                 <div className="relative h-64 bg-[#080808] flex items-center justify-center overflow-hidden">
                   {founder.photo ? (
                     <Image
                       src={founder.photo}
-                      alt={founder.name}
+                      alt={`${founder.name}, ${founder.role} at Brixven`}
                       fill
                       sizes="(max-width: 768px) 100vw, 384px"
                       className="object-cover object-top"
@@ -109,7 +109,7 @@ export default function TeamSection() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           )}
         </div>
       </div>

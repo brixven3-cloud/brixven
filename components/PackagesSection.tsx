@@ -1,22 +1,16 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { PACKAGES, CUSTOM_PACKAGE_MESSAGE } from '@/lib/content'
 import { waLink } from '@/lib/whatsapp'
+import { Reveal, StaggerGroup, StaggerItem } from './motion'
 
 export default function PackagesSection() {
   return (
     <section id="packages" className="py-28 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-10%' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center max-w-xl mx-auto mb-14 sm:mb-16"
-        >
+        <Reveal className="text-center max-w-xl mx-auto mb-14 sm:mb-16">
           <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center justify-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> Limited-Time Offers <span className="w-6 h-px bg-[#333]" />
           </p>
@@ -27,22 +21,19 @@ export default function PackagesSection() {
             Pick a Package, <em style={{ fontStyle: 'italic', color: '#cccccc' }}>Go Live Fast</em>
           </h2>
           <p className="text-[#888] text-lg">60% off this month — limited slots.</p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PACKAGES.map((pkg, i) => (
-            <motion.div
+        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PACKAGES.map((pkg) => (
+            <StaggerItem
               key={pkg.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group bg-black border border-[#1a1a1a] overflow-hidden hover:-translate-y-1 hover:border-[#333] transition-all duration-300"
+              hover
+              className="group bg-black border border-[#1a1a1a] overflow-hidden transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)]"
             >
               <div className="relative aspect-[4/5] bg-[#080808] overflow-hidden">
                 <Image
                   src={pkg.image}
-                  alt={`${pkg.title} package`}
+                  alt={`${pkg.title} package — Brixven, UK & Ireland`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -61,37 +52,33 @@ export default function PackagesSection() {
                   {pkg.cta}
                 </a>
               </div>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-10%' }}
-          transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 bg-black border border-[#1a1a1a] p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left"
-        >
-          <div>
-            <h3
-              className="text-white font-bold text-xl mb-1"
-              style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+        <Reveal delay={0.16} className="mt-6">
+          <div className="bg-black border border-[#1a1a1a] p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div>
+              <h3
+                className="text-white font-bold text-xl mb-1"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                Need something custom?
+              </h3>
+              <p className="text-[#888] text-sm">
+                Tell us what you need — we&apos;ll put together a tailored package and quote.
+              </p>
+            </div>
+            <a
+              href={waLink(CUSTOM_PACKAGE_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent text-white text-sm font-semibold rounded-full hover:bg-accent/90 transition-all duration-200 flex-shrink-0"
             >
-              Need something custom?
-            </h3>
-            <p className="text-[#888] text-sm">
-              Tell us what you need — we&apos;ll put together a tailored package and quote.
-            </p>
+              Build a custom package <ArrowRight size={14} />
+            </a>
           </div>
-          <a
-            href={waLink(CUSTOM_PACKAGE_MESSAGE)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-accent text-white text-sm font-semibold rounded-full hover:bg-accent/90 transition-all duration-200 flex-shrink-0"
-          >
-            Build a custom package <ArrowRight size={14} />
-          </a>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   )

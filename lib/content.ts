@@ -293,3 +293,31 @@ export const PACKAGES = [
 ]
 
 export const CUSTOM_PACKAGE_MESSAGE = "Hi Brixven 👋 I'd like a *custom package / quote*. Here's what I need: "
+
+// ─── FAQs ───────────────────────────────────────────────────────────────────
+export const FAQS = [
+  {
+    question: 'Do you build AI voice agents for UK and Ireland businesses?',
+    answer: 'Yes — we design, build and deploy AI voice agents (powered by Vapi) that answer inbound calls, qualify leads and book appointments around the clock. They\'re tailored to your business, integrate with your existing tools, and are popular with trades, clinics and service businesses across the UK and Ireland.',
+  },
+  {
+    question: 'How quickly can you build and launch our project?',
+    answer: 'Most web and mobile projects launch within 14 days of kickoff, thanks to our AI-accelerated workflow and senior-only team. AI voice agent and automation builds are often live within a few days. We\'ll confirm an exact timeline once we understand your scope.',
+  },
+  {
+    question: 'Which areas of the UK and Ireland do you serve?',
+    answer: 'We work with businesses across the UK and Ireland — including London, Manchester, Birmingham, Dublin and Cork — as well as remote clients throughout Europe. All work is delivered remotely with regular check-ins, so location is never a barrier.',
+  },
+  {
+    question: 'Can you automate our business processes with AI and tools like n8n?',
+    answer: 'Absolutely. We build custom automation workflows using n8n and AI — from lead follow-ups and CRM syncing to AI chatbots that handle customer queries — so your team spends less time on repetitive admin and more time on growth.',
+  },
+  {
+    question: 'Do you manage Meta and Google Ads campaigns?',
+    answer: 'Yes — our Meta & Google Ads Management service covers campaign setup, audience targeting, creative testing and ongoing optimisation, starting with a free ads audit so you can see exactly where your budget is going before you commit.',
+  },
+  {
+    question: 'How much do your packages cost?',
+    answer: 'Pricing depends on scope. Our AI Voice Agents start from £120/month (Starter), £190/month (Growth) and £290/month (Pro), and our E-Commerce Website launch package starts at £480. For custom web apps, mobile apps or automation, get in touch for a tailored quote.',
+  },
+]

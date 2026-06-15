@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/content'
 import Logo from './Logo'
+import { Magnetic } from './motion'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,21 +40,24 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-4 py-2 text-sm text-[#888888] hover:text-white transition-colors"
+                className="group relative px-4 py-2 text-sm text-[#888888] hover:text-white transition-colors"
               >
                 {link.label}
+                <span className="absolute left-4 right-4 bottom-1.5 h-px bg-accent scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e8e8e8] transition-colors"
-            >
-              Start a project
-            </Link>
+            <Magnetic>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-[#e8e8e8] transition-colors"
+              >
+                Start a project
+              </Link>
+            </Magnetic>
           </div>
 
           {/* Mobile hamburger */}

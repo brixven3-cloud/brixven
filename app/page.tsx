@@ -25,6 +25,7 @@ import Portfolio from '@/components/Portfolio'
 import SEOServices from '@/components/SEOServices'
 import TeamSection from '@/components/TeamSection'
 import Testimonials from '@/components/Testimonials'
+import FAQSection from '@/components/FAQSection'
 import CTABanner from '@/components/CTABanner'
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
       <SEOServices />
       <TeamSection />
       <Testimonials />
+      <FAQSection />
       <CTABanner />
     </>
   )

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ContactForm'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 import { CONTACT_EMAIL } from '@/lib/content'
 import { Mail, MapPin, Clock } from 'lucide-react'
 
@@ -42,6 +43,12 @@ const INFO_CARDS = [
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-black pt-24 pb-24">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://brixven.com' },
+          { name: 'Contact', url: 'https://brixven.com/contact' },
+        ]}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-14">

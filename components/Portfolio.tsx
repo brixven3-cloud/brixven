@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { PORTFOLIO } from '@/lib/content'
+import { Reveal, EASE_PREMIUM } from './motion'
 
 function screenshotUrl(liveUrl: string) {
   return `https://image.thum.io/get/width/800/crop/600/${liveUrl}`
@@ -27,7 +28,7 @@ function ProjectImage({ project }: { project: typeof PORTFOLIO[number] }) {
   return (
     <Image
       src={screenshotUrl(project.url)}
-      alt={`${project.title} website preview`}
+      alt={`${project.title} — ${project.subtitle} website design by Brixven`}
       fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -41,7 +42,7 @@ export default function Portfolio() {
   return (
     <section id="work" className="py-28 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-xl mb-16">
+        <Reveal className="max-w-xl mb-16">
           <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
             <span className="w-6 h-px bg-[#333]" /> Our Work
           </p>
@@ -54,7 +55,7 @@ export default function Portfolio() {
           <p className="text-[#888] text-lg">
             A snapshot of what we build for clients across the UK and Ireland.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {PORTFOLIO.map((project, i) => (
@@ -65,9 +66,10 @@ export default function Portfolio() {
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4, transition: { duration: 0.25, ease: EASE_PREMIUM } }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="group bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden hover:-translate-y-1 hover:border-[#333] transition-all duration-300 block"
+              transition={{ duration: 0.5, delay: i * 0.08, ease: EASE_PREMIUM }}
+              className="group bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)] block"
             >
               {/* Screenshot preview */}
               <div className="relative h-44 bg-[#080808] flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">

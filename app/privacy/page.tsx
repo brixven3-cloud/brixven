@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import BreadcrumbJsonLd from '@/components/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Brixven',
@@ -10,6 +11,12 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-black pt-28 pb-24">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://brixven.com' },
+          { name: 'Privacy Policy', url: 'https://brixven.com/privacy' },
+        ]}
+      />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <Link href="/" className="text-emerald-500 text-sm hover:text-emerald-400 transition-colors">
