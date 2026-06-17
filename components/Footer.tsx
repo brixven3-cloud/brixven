@@ -86,7 +86,7 @@ export default function Footer() {
 
             {/* Socials */}
             <div className="flex gap-2">
-              {FOOTER_SOCIALS.map(({ label, href, Icon }) => (
+              {FOOTER_SOCIALS.map(({ label, href, d }) => (
                 <a
                   key={label}
                   href={href}
@@ -95,7 +95,7 @@ export default function Footer() {
                   aria-label={label}
                   className="w-8 h-8 border border-parchment/15 flex items-center justify-center text-parchment/40 hover:text-parchment hover:border-parchment/40 transition-all duration-200"
                 >
-                  <Icon size={13} />
+                  <SvgIcon d={d} size={13} />
                 </a>
               ))}
             </div>
