@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
+import { Inter, Archivo, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -11,12 +11,11 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const playfair = Playfair_Display({
+const archivo = Archivo({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-playfair',
-  style: ['normal', 'italic'],
-  weight: ['400', '700', '800', '900'],
+  variable: '--font-archivo',
+  weight: ['400', '600', '700', '800', '900'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -31,17 +30,17 @@ const BASE_URL = 'https://brixven.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Brixven — Software for Your Business',
+    default: 'Brixven — Software & AI for UK & Ireland',
     template: '%s | Brixven',
   },
   description:
-    'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland.',
+    'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across the UK & Ireland. Founder-led digital studio.',
   keywords: [
     'software development UK', 'software development Ireland', 'web development Dublin',
     'web design Ireland', 'digital agency Ireland', 'digital agency Dublin',
-    'web app development UK', 'mobile app development', 'AI assistants',
-    'custom software', 'SEO UK', 'SEO Ireland', 'Dublin web agency',
-    'software agency London', 'software agency Dublin', 'Brixven', 'Muhammad Hamza',
+    'web app development UK', 'mobile app development', 'AI voice agents UK',
+    'custom software', 'n8n automation', 'Meta Ads UK', 'Google Ads Ireland',
+    'software agency London', 'software agency Dublin', 'Brixven',
   ],
   authors: [{ name: 'Brixven', url: BASE_URL }],
   creator: 'Brixven',
@@ -59,9 +58,9 @@ export const metadata: Metadata = {
     google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
   },
   openGraph: {
-    title: 'Brixven — Software for Your Business',
+    title: 'Brixven — Software & AI for UK & Ireland',
     description:
-      'Web apps, mobile apps, AI assistants & expert SEO — serving growing businesses across the UK & Ireland.',
+      'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across the UK & Ireland.',
     url: BASE_URL,
     siteName: 'Brixven',
     type: 'website',
@@ -69,8 +68,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Brixven — Software for Your Business',
-    description: 'Web apps · Mobile apps · AI · SEO — UK & Ireland.',
+    title: 'Brixven — Software & AI for UK & Ireland',
+    description: 'Web · AI · Automation · Ads — UK & Ireland.',
     creator: '@brixven',
   },
 }
@@ -82,8 +81,8 @@ const organizationSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
   description:
-    'Founder-led software studio providing web apps, mobile apps, AI assistants, custom software, and SEO for UK and Irish businesses.',
-  foundingDate: '2020',
+    'Founder-led software studio providing web apps, mobile apps, AI voice agents, automation and paid ads for UK and Irish businesses.',
+  foundingDate: '2025',
   founder: {
     '@type': 'Person',
     name: 'Muhammad Hamza',
@@ -91,7 +90,7 @@ const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'info@brixven.com',
+    telephone: '+44-7828-707081',
     contactType: 'customer support',
     areaServed: ['GB', 'IE'],
     availableLanguage: ['English'],
@@ -114,9 +113,10 @@ const professionalServiceSchema = {
   name: 'Brixven',
   url: BASE_URL,
   image: `${BASE_URL}/icon.svg`,
-  priceRange: '£££',
+  priceRange: '££',
+  telephone: '+44-7828-707081',
   description:
-    'Full-stack digital services for growing businesses across the UK and Ireland — AI voice agents, web development, mobile apps, business automation, and paid ads management.',
+    'Full-stack digital services for growing businesses across the UK and Ireland — AI voice agents, web development, mobile apps, automation, and paid ads management.',
   serviceType: [
     'AI Voice Agents',
     'Web Application Development',
@@ -145,7 +145,10 @@ const professionalServiceSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en-GB"
+      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
+    >
       <head>
         <script
           type="application/ld+json"

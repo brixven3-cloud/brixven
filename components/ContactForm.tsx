@@ -31,25 +31,25 @@ const BUDGET_OPTIONS = [
 
 function buildMessage(form: FormState): string {
   const lines = ['New enquiry from brixven.com', '', `Name: ${form.name}`, `Email: ${form.email}`]
-  if (form.phone) lines.push(`Phone: ${form.phone}`)
+  if (form.phone)   lines.push(`Phone: ${form.phone}`)
   if (form.company) lines.push(`Company: ${form.company}`)
   if (form.service) lines.push(`Service: ${form.service}`)
-  if (form.budget) lines.push(`Budget: ${form.budget}`)
+  if (form.budget)  lines.push(`Budget: ${form.budget}`)
   lines.push(`Message: ${form.message}`)
   return lines.join('\n')
 }
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>(INITIAL)
+  const [form, setForm]     = useState<FormState>(INITIAL)
   const [status, setStatus] = useState<Status>('idle')
-  const [waUrl, setWaUrl] = useState('')
+  const [waUrl, setWaUrl]   = useState('')
 
   function update(field: keyof FormState) {
     return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setForm((prev) => ({ ...prev, [field]: e.target.value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const url = waLink(buildMessage(form))
     setWaUrl(url)
@@ -58,32 +58,31 @@ export default function ContactForm() {
     setForm(INITIAL)
   }
 
-  const labelClass = 'block text-[#888888] text-xs font-semibold mb-1.5 tracking-wide uppercase'
+  const labelClass = 'block font-mono text-[10px] text-ink-faint tracking-[0.12em] uppercase mb-1.5'
   const inputClass =
-    'w-full bg-[#0a0a0a] border border-[#222222] px-4 py-3 text-white placeholder-[#444444] text-sm focus:outline-none focus:border-white transition-all duration-200'
+    'w-full bg-parchment border border-ink/12 px-4 py-3 text-ink placeholder-ink-faint text-sm focus:outline-none focus:border-ink transition-all duration-200'
 
   if (status === 'sent') {
     return (
-      <div className="bg-[#0a0a0a] border border-[#1a1a1a] p-8 sm:p-10 flex flex-col items-center text-center gap-5 min-h-[280px] sm:min-h-[380px] justify-center">
-        <div className="w-16 h-16 border border-[#222222] flex items-center justify-center">
-          <CheckCircle2 size={28} className="text-white" />
+      <div className="bg-parchment-dark border border-ink/10 p-8 sm:p-10 flex flex-col items-center text-center gap-5 min-h-[300px] justify-center">
+        <div className="w-14 h-14 border border-ink/15 flex items-center justify-center">
+          <CheckCircle2 size={24} className="text-ink" />
         </div>
-        <h3 className="text-white text-xl font-bold">Opening WhatsApp…</h3>
-        <p className="text-[#888888] text-sm max-w-xs leading-relaxed">
-          We&apos;ve pre-filled your message in WhatsApp. If it didn&apos;t open automatically,
-          tap the button below.
+        <h3 className="font-display font-black text-ink text-xl">Opening WhatsApp…</h3>
+        <p className="text-ink-muted text-sm max-w-xs leading-relaxed">
+          We&apos;ve pre-filled your message. If it didn&apos;t open automatically, tap the button below.
         </p>
         <a
           href={waUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-parchment text-sm font-semibold hover:bg-red transition-colors"
         >
           Open WhatsApp →
         </a>
         <button
           onClick={() => setStatus('idle')}
-          className="text-[#888888] text-sm hover:text-white transition-colors mt-1"
+          className="text-ink-faint text-sm hover:text-ink transition-colors mt-1"
         >
           Send another message →
         </button>
@@ -92,13 +91,10 @@ export default function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-[#0a0a0a] border border-[#1a1a1a] p-8 space-y-5"
-    >
+    <form onSubmit={handleSubmit} className="bg-parchment-dark border border-ink/10 p-8 space-y-5">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Name <span className="text-white">*</span></label>
+          <label className={labelClass}>Name <span className="text-red">*</span></label>
           <input
             type="text" required placeholder="Jane Smith"
             value={form.name} onChange={update('name')}
@@ -106,7 +102,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className={labelClass}>Email <span className="text-white">*</span></label>
+          <label className={labelClass}>Email <span className="text-red">*</span></label>
           <input
             type="email" required placeholder="jane@company.com"
             value={form.email} onChange={update('email')}
@@ -156,7 +152,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className={labelClass}>Message <span className="text-white">*</span></label>
+        <label className={labelClass}>Message <span className="text-red">*</span></label>
         <textarea
           required rows={6}
           placeholder="Tell us about your project — what you're building, your timeline, and any technical requirements."
@@ -167,12 +163,12 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-black text-sm font-semibold hover:bg-[#e0e0e0] transition-colors"
+        className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-ink text-parchment text-sm font-semibold hover:bg-red transition-colors duration-200"
       >
         <MessageCircle size={14} /> Send via WhatsApp
       </button>
 
-      <p className="text-[#444444] text-xs text-center">
+      <p className="text-ink-faint text-xs text-center">
         Opens WhatsApp with your message pre-filled. We respond within 24 hours.
       </p>
     </form>

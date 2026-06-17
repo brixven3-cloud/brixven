@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-black pt-28 pb-24">
+    <div className="min-h-screen bg-parchment pt-28 pb-24">
       <BreadcrumbJsonLd
         items={[
           { name: 'Home', url: 'https://brixven.com' },
