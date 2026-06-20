@@ -8,7 +8,7 @@ import { Mail, MapPin, Clock, MessageCircle } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Contact Us | Brixven',
   description:
-    'Get in touch with Brixven — web development, AI voice agents & automation for UK & Ireland businesses. WhatsApp: +44 7828 707081. We respond within 24 hours.',
+    'Get in touch with Brixven — web development, AI voice agents & automation for Scottish businesses. WhatsApp: +44 7828 707081. We respond within 24 hours.',
   alternates: { canonical: 'https://brixven.com/contact' },
   openGraph: {
     title: 'Contact Brixven — Start Your Project',
@@ -37,7 +37,7 @@ const INFO_CARDS = [
   {
     icon: MapPin,
     title: 'Offices',
-    content: 'Dublin, Ireland · London, UK',
+    content: 'Edinburgh · Glasgow, Scotland',
     isLink: false,
   },
   {

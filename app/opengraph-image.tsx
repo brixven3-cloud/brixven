@@ -10,7 +10,7 @@ export default async function OGImage() {
     (
       <div
         style={{
-          background: '#000000',
+          background: '#0A1628',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -21,38 +21,38 @@ export default async function OGImage() {
           fontFamily: 'Georgia, serif',
         }}
       >
-        <div style={{ width: 60, height: 3, background: '#ffffff', marginBottom: 40 }} />
+        <div style={{ width: 60, height: 3, background: '#D4A574', marginBottom: 40 }} />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 48 }}>
           <div style={{
-            width: 52, height: 52, background: '#ffffff', borderRadius: 6,
+            width: 52, height: 52, background: '#D4A574', borderRadius: 6,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: 'black', fontSize: 28, fontWeight: 900,
+            color: '#0A1628', fontSize: 28, fontWeight: 900,
           }}>
             B
           </div>
           <div style={{ display: 'flex' }}>
-            <span style={{ fontSize: 38, fontWeight: 900, color: '#ffffff' }}>Brixven</span>
+            <span style={{ fontSize: 38, fontWeight: 900, color: '#F5E6D3' }}>Brixven</span>
           </div>
         </div>
 
-        <div style={{ fontSize: 64, fontWeight: 800, color: '#ffffff', lineHeight: 1.05, marginBottom: 28 }}>
+        <div style={{ fontSize: 64, fontWeight: 800, color: '#F5E6D3', lineHeight: 1.05, marginBottom: 28 }}>
           We Build Software That<br />
           Powers Your{' '}
-          <span style={{ color: '#aaaaaa', fontStyle: 'italic' }}>Business</span>
+          <span style={{ color: '#D4A574', fontStyle: 'italic' }}>Business</span>
         </div>
 
-        <div style={{ fontSize: 24, color: '#888888', marginBottom: 48 }}>
+        <div style={{ fontSize: 24, color: '#a8b3c4', marginBottom: 48 }}>
           Web apps · Mobile apps · AI assistants · Custom software · SEO
         </div>
 
         <div style={{ display: 'flex', gap: 16 }}>
-          {['🇬🇧 United Kingdom', '🇮🇪 Ireland'].map((b) => (
+          {['🏴 Scotland'].map((b) => (
             <div
               key={b}
               style={{
-                border: '1px solid #333333',
-                color: '#888888',
+                border: '1px solid #1C2B45',
+                color: '#a8b3c4',
                 fontSize: 16, fontWeight: 600, letterSpacing: '0.08em',
                 padding: '10px 20px',
                 borderRadius: 999,

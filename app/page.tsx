@@ -7,14 +7,14 @@ import WhyChoose from '@/components/WhyChoose'
 import CTABanner from '@/components/CTABanner'
 
 export const metadata: Metadata = {
-  title: 'Brixven — Software & AI for UK & Ireland',
+  title: 'Brixven — Software & AI for Scotland',
   description:
-    'Web & e-commerce development, AI voice agents, automation and paid ads — serving growing businesses across the UK & Ireland. Founder-led digital studio.',
+    'Web & e-commerce development, AI voice agents, automation and paid ads — serving growing businesses across Scotland. Founder-led digital studio.',
   alternates: { canonical: 'https://brixven.com' },
   openGraph: {
-    title: 'Brixven — Software & AI for UK & Ireland',
+    title: 'Brixven — Software & AI for Scotland',
     description:
-      'Web, AI, Automation & Ads — one lean senior team for UK & Ireland businesses.',
+      'Web, AI, Automation & Ads — one lean senior team for Scottish businesses.',
     url: 'https://brixven.com',
     type: 'website',
   },

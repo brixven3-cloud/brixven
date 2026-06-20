@@ -18,7 +18,7 @@ export default function Testimonials() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
   return (
-    <section className="py-28 bg-black">
+    <section className="py-28 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
           <div className="max-w-xl">
@@ -49,14 +49,14 @@ export default function Testimonials() {
               <button
                 onClick={scrollPrev}
                 aria-label="Previous testimonial"
-                className="w-10 h-10 border border-[#222] bg-[#0a0a0a] flex items-center justify-center text-[#666] hover:text-white hover:border-[#555] transition-colors"
+                className="w-10 h-10 border border-[#26395A] bg-[#0F1D33] flex items-center justify-center text-[#666] hover:text-white hover:border-gold/50 transition-colors"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={scrollNext}
                 aria-label="Next testimonial"
-                className="w-10 h-10 border border-[#222] bg-[#0a0a0a] flex items-center justify-center text-[#666] hover:text-white hover:border-[#555] transition-colors"
+                className="w-10 h-10 border border-[#26395A] bg-[#0F1D33] flex items-center justify-center text-[#666] hover:text-white hover:border-gold/50 transition-colors"
               >
                 <ChevronRight size={18} />
               </button>
@@ -70,14 +70,14 @@ export default function Testimonials() {
               {TESTIMONIALS.map((t, i) => (
                 <div
                   key={i}
-                  className="embla__slide flex-[0_0_90%] sm:flex-[0_0_50%] lg:flex-[0_0_calc(33.333%-11px)] bg-[#0a0a0a] border border-[#1a1a1a] p-6 flex flex-col gap-5"
+                  className="embla__slide flex-[0_0_90%] sm:flex-[0_0_50%] lg:flex-[0_0_calc(33.333%-11px)] bg-[#0F1D33] border border-[#1C2B45] p-6 flex flex-col gap-5"
                 >
-                  <Quote size={20} className="text-white/20" />
+                  <Quote size={20} className="text-gold/30" />
                   <p className="text-[#aab8cc] text-sm leading-relaxed italic flex-1">
                     &ldquo;{t.quote}&rdquo;
                   </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-[#1a1a1a]">
-                    <div className="w-9 h-9 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-sm">
+                  <div className="flex items-center gap-3 pt-4 border-t border-[#1C2B45]">
+                    <div className="w-9 h-9 rounded-full bg-[#152238] border border-[#26395A] flex items-center justify-center text-sm">
                       {t.flag}
                     </div>
                     <div>

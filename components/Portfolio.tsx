@@ -40,7 +40,7 @@ function ProjectImage({ project }: { project: typeof PORTFOLIO[number] }) {
 
 export default function Portfolio() {
   return (
-    <section id="work" className="py-28 bg-[#0a0a0a]">
+    <section id="work" className="py-28 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal className="max-w-xl mb-16">
           <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center gap-3">
@@ -53,7 +53,7 @@ export default function Portfolio() {
             Selected Projects
           </h2>
           <p className="text-[#888] text-lg">
-            A snapshot of what we build for clients across the UK and Ireland.
+            A snapshot of what we build for clients across Scotland.
           </p>
         </Reveal>
 
@@ -69,10 +69,10 @@ export default function Portfolio() {
               whileHover={{ y: -4, transition: { duration: 0.25, ease: EASE_PREMIUM } }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: EASE_PREMIUM }}
-              className="group bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)] block"
+              className="group bg-[#0F1D33] border border-[#1C2B45] overflow-hidden transition-colors duration-300 hover:border-gold/30 hover:shadow-[0_0_30px_-10px_rgba(212,165,116,0.4)] block"
             >
               {/* Screenshot preview */}
-              <div className="relative h-44 bg-[#080808] flex items-center justify-center overflow-hidden border-b border-[#1a1a1a]">
+              <div className="relative h-44 bg-[#0A1628] flex items-center justify-center overflow-hidden border-b border-[#1C2B45]">
                 <ProjectImage project={project} />
 
                 {/* Hover overlay with arrow */}

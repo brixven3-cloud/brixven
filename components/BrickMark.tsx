@@ -69,7 +69,7 @@ export default function BrickMark({ state, size = 200, className = '' }: BrickMa
           style={{
             left: '50%',
             top: '50%',
-            background: '#E10A0A',
+            background: '#D4A574',
             translateX: '-50%',
             translateY: '-50%',
           }}

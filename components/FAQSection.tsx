@@ -16,7 +16,7 @@ const faqSchema = {
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-28 bg-[#0a0a0a]">
+    <section id="faq" className="py-28 bg-[#0A1628]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -39,12 +39,12 @@ export default function FAQSection() {
           />
           <Reveal delay={0.1}>
             <p className="text-[#888] text-lg leading-relaxed">
-              Everything you need to know about working with Brixven across the UK and Ireland.
+              Everything you need to know about working with Brixven across Scotland.
             </p>
           </Reveal>
         </div>
 
-        <StaggerGroup className="divide-y divide-[#1a1a1a]">
+        <StaggerGroup className="divide-y divide-[#1C2B45]">
           {FAQS.map((faq) => (
             <StaggerItem key={faq.question} className="py-6">
               <h3 className="text-white font-semibold text-lg mb-2">{faq.question}</h3>

@@ -22,9 +22,9 @@ const PANELS = [
     ],
     mark: 'hero' as MarkState,
     bg: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=70&auto=format',
-    bgAlt: 'Edinburgh Castle — atmospheric greyscale',
+    bgAlt: 'Edinburgh Castle — atmospheric backdrop',
     waMsg: 'Hi Brixven 👋 I\'m interested in a *Web & E-Commerce* project. Can we discuss next steps?',
-    sectionBg: '#EDEAE6',
+    sectionBg: '#0A1628',
   },
   {
     id: 'ai',
@@ -37,9 +37,9 @@ const PANELS = [
     ],
     mark: 'pinwheel' as MarkState,
     bg: 'https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=1400&q=70&auto=format',
-    bgAlt: 'Trinity College Dublin Long Room — atmospheric greyscale',
+    bgAlt: 'Glasgow University cloisters — atmospheric backdrop',
     waMsg: 'Hi Brixven 👋 I\'m interested in an *AI Voice Agent*. Can we book a demo?',
-    sectionBg: '#D9D6D1',
+    sectionBg: '#152238',
   },
   {
     id: 'automation',
@@ -52,9 +52,9 @@ const PANELS = [
     ],
     mark: 'circle' as MarkState,
     bg: 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1400&q=70&auto=format',
-    bgAlt: 'Georgian Dublin doorway — atmospheric greyscale',
+    bgAlt: 'Aberdeen granite tenement doorway — atmospheric backdrop',
     waMsg: 'Hi Brixven 👋 I\'d like to discuss *business automation* using n8n. Can we talk?',
-    sectionBg: '#EDEAE6',
+    sectionBg: '#0A1628',
   },
   {
     id: 'ads',
@@ -67,9 +67,9 @@ const PANELS = [
     ],
     mark: 'semicircle' as MarkState,
     bg: 'https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1400&q=70&auto=format',
-    bgAlt: 'Bath Royal Crescent — atmospheric greyscale',
+    bgAlt: 'Dundee waterfront architecture — atmospheric backdrop',
     waMsg: 'Hi Brixven 👋 I\'d like a *free ads audit* and to discuss Meta & Google Ads management.',
-    sectionBg: '#D9D6D1',
+    sectionBg: '#152238',
   },
 ]
 
@@ -112,11 +112,7 @@ function PillarPanel({
           fill
           sizes="100vw"
           className="object-cover object-center"
-          style={{
-            filter: 'grayscale(1)',
-            mixBlendMode: 'multiply',
-            opacity: 0.13,
-          }}
+          style={{ opacity: 0.22 }}
         />
         <div
           className="absolute inset-0"

@@ -11,7 +11,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function ServicesGrid() {
   return (
-    <section id="services" className="py-24 bg-black">
+    <section id="services" className="py-24 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-14">
           <p className="font-mono text-[#555] text-xs font-bold tracking-[0.2em] uppercase mb-4 flex items-center justify-center gap-3">
@@ -35,9 +35,9 @@ export default function ServicesGrid() {
               <StaggerItem
                 key={svc.title}
                 hover
-                className="group bg-[#0a0a0a] border border-[#1a1a1a] p-6 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)]"
+                className="group bg-[#0F1D33] border border-[#1C2B45] p-6 transition-colors duration-300 hover:border-gold/30 hover:shadow-[0_0_30px_-10px_rgba(212,165,116,0.4)]"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#111] border border-[#222] flex items-center justify-center mb-5 group-hover:bg-[#1a1a1a] transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-[#152238] border border-[#26395A] flex items-center justify-center mb-5 group-hover:bg-[#1C2B45] transition-colors">
                   <Icon size={18} className="text-white" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-white font-semibold text-[0.9375rem] mb-2 leading-snug">{svc.title}</h3>

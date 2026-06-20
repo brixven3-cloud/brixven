@@ -9,12 +9,12 @@ const iconMap: Record<string, LucideIcon> = { Search, FileText, Settings2, MapPi
 
 export default function SEOServices() {
   return (
-    <section id="seo" className="py-28 bg-black">
+    <section id="seo" className="py-28 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-xl mb-16">
           <Reveal>
             <div className="font-mono inline-flex items-center gap-2 text-[10px] font-semibold tracking-[0.2em] uppercase text-[#888] mb-4">
-              🇬🇧 UK &amp; 🇮🇪 Ireland
+              🏴 Scotland-Wide SEO
             </div>
           </Reveal>
           <SplitLines
@@ -28,8 +28,8 @@ export default function SEOServices() {
           />
           <Reveal delay={0.1}>
             <p className="text-[#888] text-lg leading-relaxed">
-              Local expertise, international standards. We rank businesses across the UK and
-              Ireland — from London and Manchester to Dublin and Cork — with strategies built for each audience.
+              Local expertise, national standards. We rank businesses across Scotland — from
+              Edinburgh and Glasgow to Aberdeen and Dundee — with strategies built for each audience.
             </p>
           </Reveal>
         </div>
@@ -41,9 +41,9 @@ export default function SEOServices() {
               <StaggerItem
                 key={feature.title}
                 hover
-                className="group bg-[#0a0a0a] border border-[#1a1a1a] p-6 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)]"
+                className="group bg-[#0F1D33] border border-[#1C2B45] p-6 transition-colors duration-300 hover:border-gold/30 hover:shadow-[0_0_30px_-10px_rgba(212,165,116,0.4)]"
               >
-                <div className="w-9 h-9 rounded-lg bg-[#111] border border-[#222] flex items-center justify-center mb-4 group-hover:bg-[#1a1a1a] transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-[#152238] border border-[#26395A] flex items-center justify-center mb-4 group-hover:bg-[#1C2B45] transition-colors">
                   <Icon size={16} className="text-white" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-white font-bold text-base mb-1.5">{feature.title}</h3>

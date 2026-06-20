@@ -9,7 +9,7 @@ export default function TeamSection() {
   const founder = TEAM[0]
 
   return (
-    <section id="team" className="py-28 bg-[#0a0a0a]">
+    <section id="team" className="py-28 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
@@ -50,10 +50,10 @@ export default function TeamSection() {
                 { icon: Zap, text: 'AI-accelerated delivery' },
                 { icon: Zap, text: 'Senior-only talent' },
                 { icon: Zap, text: 'Direct founder access' },
-                { icon: Zap, text: 'UK & Ireland market depth' },
+                { icon: Zap, text: 'Scotland market depth' },
               ].map(({ icon: Icon, text }) => (
                 <StaggerItem key={text} className="flex items-center gap-2.5 text-sm text-[#8899aa]">
-                  <div className="w-5 h-5 rounded-full bg-[#111] border border-[#222] flex items-center justify-center flex-shrink-0">
+                  <div className="w-5 h-5 rounded-full bg-[#152238] border border-[#26395A] flex items-center justify-center flex-shrink-0">
                     <Icon size={11} className="text-white" />
                   </div>
                   {text}
@@ -65,8 +65,8 @@ export default function TeamSection() {
           {/* Right: founder card */}
           {founder && (
             <Reveal delay={0.15}>
-              <div className="bg-[#0a0a0a] border border-[#1a1a1a] overflow-hidden max-w-sm">
-                <div className="relative h-64 bg-[#080808] flex items-center justify-center overflow-hidden">
+              <div className="bg-[#0F1D33] border border-[#1C2B45] overflow-hidden max-w-sm">
+                <div className="relative h-64 bg-[#0A1628] flex items-center justify-center overflow-hidden">
                   {founder.photo ? (
                     <Image
                       src={founder.photo}
@@ -76,24 +76,24 @@ export default function TeamSection() {
                       className="object-cover object-top"
                     />
                   ) : (
-                    <div className="w-24 h-24 rounded-full bg-[#111] border border-[#222] flex items-center justify-center text-2xl font-bold text-white">
+                    <div className="w-24 h-24 rounded-full bg-[#152238] border border-[#26395A] flex items-center justify-center text-2xl font-bold text-white">
                       {founder.initials}
                     </div>
                   )}
-                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+                  <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0F1D33] to-transparent" />
                 </div>
 
                 <div className="p-6">
                   <h3 className="text-white font-bold text-lg leading-tight mb-0.5">{founder.name}</h3>
                   <p className="text-[#888] text-xs font-semibold tracking-[0.15em] uppercase mb-3">{founder.role}</p>
                   <p className="text-[#8899aa] text-sm leading-relaxed mb-5">{founder.bio}</p>
-                  <div className="flex gap-2 pt-4 border-t border-[#1a1a1a]">
+                  <div className="flex gap-2 pt-4 border-t border-[#1C2B45]">
                     <a
                       href={founder.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${founder.name} on LinkedIn`}
-                      className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
+                      className="w-8 h-8 bg-[#152238] border border-[#26395A] flex items-center justify-center text-[#556070] hover:text-white hover:border-gold/50 transition-colors"
                     >
                       <Linkedin size={13} />
                     </a>
@@ -102,7 +102,7 @@ export default function TeamSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`${founder.name} on Instagram`}
-                      className="w-8 h-8 bg-[#111] border border-[#222] flex items-center justify-center text-[#556070] hover:text-white hover:border-[#555] transition-colors"
+                      className="w-8 h-8 bg-[#152238] border border-[#26395A] flex items-center justify-center text-[#556070] hover:text-white hover:border-gold/50 transition-colors"
                     >
                       <Instagram size={13} />
                     </a>

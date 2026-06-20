@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { CONTACT_EMAIL, FOOTER_LINKS, SOCIALS } from '@/lib/content'
 import { WHATSAPP_DISPLAY } from '@/lib/whatsapp'
 import { Reveal } from './motion'
+import Logo from './Logo'
 
 function SvgIcon({ d, size = 13 }: { d: string | string[]; size?: number }) {
   const paths = Array.isArray(d) ? d : [d]
@@ -36,36 +37,33 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-ink text-parchment">
+    <footer className="bg-[#060D18] text-cream">
       {/* Top hairline */}
-      <div className="h-px bg-parchment/10" />
+      <div className="h-px bg-cream/10" />
 
       <Reveal className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-14">
 
           {/* Brand column */}
           <div className="md:col-span-4">
-            <Link
-              href="/"
-              className="font-display font-black text-parchment text-2xl tracking-tight hover:text-red transition-colors duration-200 block mb-5"
-            >
-              Brixven
-            </Link>
+            <div className="mb-5">
+              <Logo iconSize={36} textClass="text-2xl" />
+            </div>
 
-            <p className="text-parchment/50 text-sm leading-relaxed max-w-[240px] mb-6">
-              Founder-led software &amp; AI studio building products for UK &amp; Irish businesses.
+            <p className="text-cream/50 text-sm leading-relaxed max-w-[240px] mb-6">
+              Founder-led software &amp; AI studio building products for Scottish businesses.
             </p>
 
             {/* WhatsApp contact */}
             <div className="mb-6">
-              <p className="font-mono text-[9px] text-parchment/40 uppercase tracking-[0.14em] mb-1">
+              <p className="font-mono text-[9px] text-cream/40 uppercase tracking-[0.14em] mb-1">
                 WhatsApp
               </p>
               <Link
                 href="https://wa.me/447828707081"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-parchment hover:text-red transition-colors duration-200"
+                className="text-sm font-semibold text-cream hover:text-red transition-colors duration-200"
               >
                 {WHATSAPP_DISPLAY}
               </Link>
@@ -73,12 +71,12 @@ export default function Footer() {
 
             {/* Email */}
             <div className="mb-7">
-              <p className="font-mono text-[9px] text-parchment/40 uppercase tracking-[0.14em] mb-1">
+              <p className="font-mono text-[9px] text-cream/40 uppercase tracking-[0.14em] mb-1">
                 Email
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="text-sm text-parchment/70 hover:text-parchment transition-colors"
+                className="text-sm text-cream/70 hover:text-cream transition-colors"
               >
                 {CONTACT_EMAIL}
               </a>
@@ -93,7 +91,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-8 h-8 border border-parchment/15 flex items-center justify-center text-parchment/40 hover:text-parchment hover:border-parchment/40 transition-all duration-200"
+                  className="w-8 h-8 border border-cream/15 flex items-center justify-center text-cream/40 hover:text-cream hover:border-cream/40 transition-all duration-200"
                 >
                   <SvgIcon d={d} size={13} />
                 </a>
@@ -105,7 +103,7 @@ export default function Footer() {
           {(Object.entries(FOOTER_LINKS) as [string, { label: string; href: string }[]][]).map(
             ([section, links]) => (
               <div key={section} className="md:col-span-2">
-                <h4 className="font-mono text-[9px] text-parchment/40 font-bold tracking-[0.18em] uppercase mb-5">
+                <h4 className="font-mono text-[9px] text-cream/40 font-bold tracking-[0.18em] uppercase mb-5">
                   {section}
                 </h4>
                 <ul className="space-y-3">
@@ -113,7 +111,7 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-parchment/60 text-sm hover:text-parchment transition-colors"
+                        className="text-cream/60 text-sm hover:text-cream transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -126,29 +124,29 @@ export default function Footer() {
 
           {/* Contact column */}
           <div className="md:col-span-2">
-            <h4 className="font-mono text-[9px] text-parchment/40 font-bold tracking-[0.18em] uppercase mb-5">
+            <h4 className="font-mono text-[9px] text-cream/40 font-bold tracking-[0.18em] uppercase mb-5">
               Start a project
             </h4>
             <Link
               href="/contact"
-              className="inline-flex items-center text-sm font-semibold text-parchment hover:text-red transition-colors duration-200"
+              className="inline-flex items-center text-sm font-semibold text-cream hover:text-red transition-colors duration-200"
             >
               Talk to us →
             </Link>
             <div className="mt-4 space-y-1">
-              <div className="text-parchment/50 text-xs">🇮🇪 Dublin, Ireland</div>
-              <div className="text-parchment/50 text-xs">🇬🇧 London, United Kingdom</div>
+              <div className="text-cream/50 text-xs">🏴 Edinburgh, Scotland</div>
+              <div className="text-cream/50 text-xs">🏴 Glasgow, Scotland</div>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-parchment/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-parchment/30 text-xs tracking-wide">
+        <div className="border-t border-cream/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-cream/30 text-xs tracking-wide">
             © {year} Brixven. All rights reserved.
           </p>
-          <p className="text-parchment/30 text-xs tracking-wide">
-            Ireland 🇮🇪 · United Kingdom 🇬🇧
+          <p className="text-cream/30 text-xs tracking-wide">
+            Scotland 🏴 · United Kingdom 🇬🇧
           </p>
         </div>
       </Reveal>

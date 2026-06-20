@@ -23,7 +23,7 @@ function PackageImage({ pkg }: { pkg: typeof PACKAGES[number] }) {
   return (
     <Image
       src={pkg.image}
-      alt={`${pkg.title} package — Brixven, UK & Ireland`}
+      alt={`${pkg.title} package — Brixven, Scotland`}
       fill
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -99,15 +99,15 @@ export default function PackagesSection() {
 
         {/* Custom row */}
         <Reveal delay={0.14} className="mt-px border border-t-0 border-ink/10">
-          <div className="bg-ink text-parchment p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="bg-[#060D18] text-cream p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <p className="font-mono text-[10px] text-parchment/50 uppercase tracking-[0.14em] mb-2">
+              <p className="font-mono text-[10px] text-cream/50 uppercase tracking-[0.14em] mb-2">
                 Custom scope
               </p>
-              <h3 className="font-display font-black text-xl text-parchment tracking-tight leading-tight">
+              <h3 className="font-display font-black text-xl text-cream tracking-tight leading-tight">
                 Need something bespoke?
               </h3>
-              <p className="text-parchment/60 text-sm mt-1">
+              <p className="text-cream/60 text-sm mt-1">
                 Tell us what you need — we&apos;ll build a tailored quote.
               </p>
             </div>
@@ -115,7 +115,7 @@ export default function PackagesSection() {
               href={waLink(CUSTOM_PACKAGE_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-red text-parchment text-sm font-semibold tracking-wide hover:bg-red-dark transition-colors duration-200 flex-shrink-0"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-red text-[#0A1628] text-sm font-semibold tracking-wide hover:bg-red-dark transition-colors duration-200 flex-shrink-0"
             >
               Get a custom quote
             </Link>

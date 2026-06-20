@@ -19,14 +19,14 @@ export default function PrivacyPage() {
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <Link href="/" className="text-emerald-500 text-sm hover:text-emerald-400 transition-colors">
+          <Link href="/" className="text-gold text-sm hover:text-cream transition-colors">
             ← Back to home
           </Link>
         </div>
 
         <h1
           className="text-4xl sm:text-5xl font-bold text-white mb-4"
-          style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+          style={{ fontFamily: 'var(--font-playfair), "Playfair Display", Georgia, serif' }}
         >
           Privacy Policy
         </h1>
@@ -72,10 +72,10 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-white text-xl font-semibold mb-3">5. Your Rights (GDPR)</h2>
             <p>
-              If you are located in the UK, Ireland, or EU, you have the right to access, correct,
+              If you are located in Scotland, the UK, or the EU, you have the right to access, correct,
               or delete any personal data we hold about you. To exercise these rights, please contact
               us at{' '}
-              <a href="mailto:info@brixven.com" className="text-emerald-500 hover:text-emerald-400">
+              <a href="mailto:info@brixven.com" className="text-gold hover:text-cream">
                 info@brixven.com
               </a>.
             </p>
@@ -85,11 +85,11 @@ export default function PrivacyPage() {
             <h2 className="text-white text-xl font-semibold mb-3">6. Contact</h2>
             <p>
               Questions about this policy? Contact us at{' '}
-              <a href="mailto:info@brixven.com" className="text-emerald-500 hover:text-emerald-400">
+              <a href="mailto:info@brixven.com" className="text-gold hover:text-cream">
                 info@brixven.com
               </a>
               {' '}or via our{' '}
-              <Link href="/contact" className="text-emerald-500 hover:text-emerald-400">
+              <Link href="/contact" className="text-gold hover:text-cream">
                 contact form
               </Link>.
             </p>

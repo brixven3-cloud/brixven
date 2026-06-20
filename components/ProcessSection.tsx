@@ -5,7 +5,7 @@ import { Reveal, StaggerGroup, StaggerItem } from './motion'
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="py-28 bg-black">
+    <section id="process" className="py-28 bg-[#0A1628]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal className="text-center max-w-xl mx-auto mb-14 sm:mb-16">
           <p className="font-mono text-[10px] font-semibold tracking-[0.22em] uppercase text-[#444] mb-4 flex items-center justify-center gap-3">
@@ -29,9 +29,9 @@ export default function ProcessSection() {
               <StaggerItem
                 key={step.step}
                 hover
-                className="bg-[#0a0a0a] border border-[#1a1a1a] flex flex-col items-center text-center px-5 py-8 transition-colors duration-300 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(255,59,48,0.4)]"
+                className="bg-[#0F1D33] border border-[#1C2B45] flex flex-col items-center text-center px-5 py-8 transition-colors duration-300 hover:border-gold/30 hover:shadow-[0_0_30px_-10px_rgba(212,165,116,0.4)]"
               >
-                <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#222] flex items-center justify-center mb-6">
+                <div className="w-14 h-14 rounded-xl bg-[#152238] border border-[#26395A] flex items-center justify-center mb-6">
                   <span
                     className="text-lg font-bold text-white"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Archivo, JetBrains_Mono } from 'next/font/google'
+import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -11,11 +11,11 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const archivo = Archivo({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-archivo',
-  weight: ['400', '600', '700', '800', '900'],
+  variable: '--font-playfair',
+  weight: ['400', '500', '600', '700', '800', '900'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -30,17 +30,17 @@ const BASE_URL = 'https://brixven.com'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'Brixven — Software & AI for UK & Ireland',
+    default: 'Brixven — Software & AI for Scotland',
     template: '%s | Brixven',
   },
   description:
-    'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across the UK & Ireland. Founder-led digital studio.',
+    'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across Scotland. Founder-led digital studio.',
   keywords: [
-    'software development UK', 'software development Ireland', 'web development Dublin',
-    'web design Ireland', 'digital agency Ireland', 'digital agency Dublin',
-    'web app development UK', 'mobile app development', 'AI voice agents UK',
-    'custom software', 'n8n automation', 'Meta Ads UK', 'Google Ads Ireland',
-    'software agency London', 'software agency Dublin', 'Brixven',
+    'software development Scotland', 'web development Edinburgh', 'web design Glasgow',
+    'digital agency Scotland', 'digital agency Edinburgh', 'web app development Scotland',
+    'mobile app development Scotland', 'AI voice agents Scotland', 'AI voice agents Edinburgh',
+    'custom software Scotland', 'n8n automation Scotland', 'Meta Ads Scotland', 'Google Ads Scotland',
+    'software agency Glasgow', 'software agency Aberdeen', 'software agency Dundee', 'Brixven',
   ],
   authors: [{ name: 'Brixven', url: BASE_URL }],
   creator: 'Brixven',
@@ -50,7 +50,6 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
     languages: {
       'en-GB': BASE_URL,
-      'en-IE': BASE_URL,
       'x-default': BASE_URL,
     },
   },
@@ -58,9 +57,9 @@ export const metadata: Metadata = {
     google: 'k1RYOtvByaEbm1CMvaPHdrp3BzMcQ7Lg3XBvJ3GCUDQ',
   },
   openGraph: {
-    title: 'Brixven — Software & AI for UK & Ireland',
+    title: 'Brixven — Software & AI for Scotland',
     description:
-      'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across the UK & Ireland.',
+      'Web apps, mobile apps, AI voice agents & automation — serving growing businesses across Scotland.',
     url: BASE_URL,
     siteName: 'Brixven',
     type: 'website',
@@ -68,9 +67,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Brixven — Software & AI for UK & Ireland',
-    description: 'Web · AI · Automation · Ads — UK & Ireland.',
+    title: 'Brixven — Software & AI for Scotland',
+    description: 'Web · AI · Automation · Ads — Scotland.',
     creator: '@brixven',
+  },
+  other: {
+    'geo.region': 'GB-SCT',
+    'geo.placename': 'Edinburgh, Scotland',
+    'geo.position': '55.9533;-3.1883',
+    ICBM: '55.9533, -3.1883',
   },
 }
 
@@ -81,7 +86,7 @@ const organizationSchema = {
   url: BASE_URL,
   logo: `${BASE_URL}/icon.svg`,
   description:
-    'Founder-led software studio providing web apps, mobile apps, AI voice agents, automation and paid ads for UK and Irish businesses.',
+    'Founder-led software studio providing web apps, mobile apps, AI voice agents, automation and paid ads for Scottish businesses.',
   foundingDate: '2025',
   founder: {
     '@type': 'Person',
@@ -92,7 +97,7 @@ const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+44-7828-707081',
     contactType: 'customer support',
-    areaServed: ['GB', 'IE'],
+    areaServed: ['GB-SCT'],
     availableLanguage: ['English'],
   },
   sameAs: [
@@ -102,8 +107,8 @@ const organizationSchema = {
     'https://www.threads.com/@brix_ven',
   ],
   address: [
-    { '@type': 'PostalAddress', addressLocality: 'Dublin', addressCountry: 'IE' },
-    { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+    { '@type': 'PostalAddress', addressLocality: 'Edinburgh', addressRegion: 'Scotland', addressCountry: 'GB' },
+    { '@type': 'PostalAddress', addressLocality: 'Glasgow', addressRegion: 'Scotland', addressCountry: 'GB' },
   ],
 }
 
@@ -116,7 +121,7 @@ const professionalServiceSchema = {
   priceRange: '££',
   telephone: '+44-7828-707081',
   description:
-    'Full-stack digital services for growing businesses across the UK and Ireland — AI voice agents, web development, mobile apps, automation, and paid ads management.',
+    'Full-stack digital services for growing businesses across Scotland — AI voice agents, web development, mobile apps, automation, and paid ads management.',
   serviceType: [
     'AI Voice Agents',
     'Web Application Development',
@@ -128,12 +133,15 @@ const professionalServiceSchema = {
     'UI/UX Design',
   ],
   areaServed: [
-    { '@type': 'Country', name: 'United Kingdom' },
-    { '@type': 'Country', name: 'Ireland' },
+    { '@type': 'AdministrativeArea', name: 'Scotland' },
+    { '@type': 'City', name: 'Edinburgh' },
+    { '@type': 'City', name: 'Glasgow' },
+    { '@type': 'City', name: 'Aberdeen' },
+    { '@type': 'City', name: 'Dundee' },
   ],
   address: [
-    { '@type': 'PostalAddress', addressLocality: 'Dublin', addressCountry: 'IE' },
-    { '@type': 'PostalAddress', addressLocality: 'London', addressCountry: 'GB' },
+    { '@type': 'PostalAddress', addressLocality: 'Edinburgh', addressRegion: 'Scotland', addressCountry: 'GB' },
+    { '@type': 'PostalAddress', addressLocality: 'Glasgow', addressRegion: 'Scotland', addressCountry: 'GB' },
   ],
   sameAs: [
     'https://www.linkedin.com/company/brixven/',
@@ -147,7 +155,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-GB"
-      className={`${inter.variable} ${archivo.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <script

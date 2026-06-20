@@ -1,7 +1,7 @@
 // ─── Edit all site copy from here ─────────────────────────────────────────────
 
 export const CONTACT_EMAIL = 'info@brixven.com'
-export const COUNTRIES = ['United Kingdom', 'Ireland']
+export const COUNTRIES = ['Scotland']
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/#services' },
@@ -14,7 +14,7 @@ export const NAV_LINKS = [
 
 export const STATS = [
   { value: '14-Day',     label: 'Average Build' },
-  { value: 'UK · IE',    label: 'Markets Served' },
+  { value: 'Scotland',   label: 'Wide Coverage' },
   { value: '24h',        label: 'Response Guarantee' },
   { value: 'Full Stack', label: 'End-to-End Capability' },
 ]
@@ -23,7 +23,7 @@ export const SERVICES = [
   {
     icon: 'Globe',
     title: 'Web App Development',
-    description: 'Full-stack web applications built with modern frameworks — fast, secure, and ready to scale across UK and Irish markets.',
+    description: 'Full-stack web applications built with modern frameworks — fast, secure, and ready to scale across the Scottish market.',
   },
   {
     icon: 'Smartphone',
@@ -53,7 +53,7 @@ export const SERVICES = [
   {
     icon: 'TrendingUp',
     title: 'SEO & Digital Marketing',
-    description: 'Data-driven SEO for UK and Irish markets — real rankings, qualified traffic, measurable ROI.',
+    description: 'Data-driven SEO for the Scottish market — real rankings, qualified traffic, measurable ROI.',
   },
   {
     icon: 'BarChart2',
@@ -82,8 +82,8 @@ export const WHY_BRIXVEN = [
     description: 'We leverage cutting-edge AI tooling to deliver faster, smarter results without compromising quality.',
   },
   {
-    title: 'UK & Ireland reach',
-    description: 'Deep understanding of UK and Irish market dynamics, regulations, and user expectations.',
+    title: 'Scotland-wide reach',
+    description: 'Deep understanding of Scottish market dynamics, regulations, and user expectations.',
   },
   {
     title: 'End-to-end ownership',
@@ -120,36 +120,36 @@ export const PROCESS = [
 
 export const PORTFOLIO = [
   {
-    title: 'Liffey Plumbing & Heating',
-    subtitle: 'Emergency Plumber Website — Dublin',
+    title: 'Clyde Plumbing & Heating',
+    subtitle: 'Emergency Plumber Website — Glasgow',
     category: 'Web Design — Trades',
     url: 'https://darkgreen-falcon-889862.hostingersite.com/',
-    description: 'A fast, conversion-focused site for a Dublin plumbing company with click-to-call, service areas and 24/7 booking.',
+    description: 'A fast, conversion-focused site for a Glasgow plumbing company with click-to-call, service areas and 24/7 booking.',
   },
   {
-    title: "Aoife's Kitchen",
-    subtitle: 'Modern Irish Bistro — Dublin',
+    title: 'Thistle & Sage',
+    subtitle: 'Modern Scottish Bistro — Edinburgh',
     category: 'Web Design — Hospitality',
     url: 'https://lavenderblush-jaguar-848942.hostingersite.com/',
     description: 'An elegant restaurant site with animated visuals, menu, gallery and online table reservations.',
   },
   {
     title: 'Lúmina Beauty & Skin',
-    subtitle: 'Luxury Salon & Spa — Dublin',
+    subtitle: 'Luxury Salon & Spa — Edinburgh',
     category: 'Web Design — Beauty & Wellness',
     url: 'https://rosybrown-lyrebird-479952.hostingersite.com/',
     description: 'A premium salon site with smooth animations, treatment menu and online booking.',
   },
   {
-    title: 'Shannon & Co. Advisory',
-    subtitle: 'Accountants & Business Consultants — Dublin',
+    title: 'Caledonia Advisory',
+    subtitle: 'Accountants & Business Consultants — Glasgow',
     category: 'Web Design — Professional Services',
     url: 'https://greenyellow-clam-177349.hostingersite.com/',
-    description: 'A credible, corporate site for an Irish accountancy and advisory firm, built for trust and lead generation.',
+    description: 'A credible, corporate site for a Scottish accountancy and advisory firm, built for trust and lead generation.',
   },
   {
     title: 'Glenroe Family Clinic',
-    subtitle: 'GP & Family Healthcare — Dublin',
+    subtitle: 'GP & Family Healthcare — Aberdeen',
     category: 'Web Design — Healthcare',
     url: 'https://coral-termite-804533.hostingersite.com/',
     description: 'A calm, accessible clinic website with online appointment requests and clear service information.',
@@ -167,7 +167,7 @@ export const SEO_FEATURES = [
   {
     icon: 'Search',
     title: 'Keyword Research',
-    description: 'Deep research into UK and Irish search intent, volume, and competitive landscape.',
+    description: 'Deep research into Scottish search intent, volume, and competitive landscape.',
   },
   {
     icon: 'FileText',
@@ -181,8 +181,8 @@ export const SEO_FEATURES = [
   },
   {
     icon: 'MapPin',
-    title: 'Local SEO (UK + Ireland)',
-    description: 'Google Business optimisation, local citations, and geo-targeted ranking for UK & IE.',
+    title: 'Local SEO (Scotland)',
+    description: 'Google Business optimisation, local citations, and geo-targeted ranking across Scotland.',
   },
   {
     icon: 'Link',
@@ -201,24 +201,24 @@ export const SEO_FEATURES = [
 export const TESTIMONIALS = [
   {
     quote: 'The team delivered exactly what they promised — on time and within budget. Communication throughout was exceptional.',
-    name: 'UK-based SaaS Founder',
+    name: 'Edinburgh-based SaaS Founder',
     role: 'CEO, B2B Tech Startup',
-    flag: '🇬🇧',
-    avatar: 'UK',
+    flag: '🏴',
+    avatar: 'EDI',
   },
   {
     quote: 'Our organic traffic doubled within four months of Brixven taking over our SEO strategy. Clear reporting, no fluff.',
-    name: 'Irish E-commerce Operator',
+    name: 'Glasgow E-commerce Operator',
     role: 'Head of Growth',
-    flag: '🇮🇪',
-    avatar: 'IE',
+    flag: '🏴',
+    avatar: 'GLA',
   },
   {
     quote: 'The AI assistant they built handles 70% of our support queries automatically. ROI was visible within the first month.',
-    name: 'UK Professional Services Firm',
+    name: 'Aberdeen Professional Services Firm',
     role: 'Managing Director',
-    flag: '🇬🇧',
-    avatar: 'UK',
+    flag: '🏴',
+    avatar: 'ABZ',
   },
 ]
 
@@ -227,7 +227,7 @@ export const TEAM = [
   {
     name: 'Muhammad Hamza',
     role: 'Founder & Lead Engineer',
-    bio: 'Hamza founded Brixven to bring world-class software delivery to UK and Irish businesses. He leads every engagement personally, backed by a curated network of specialist engineers and the latest AI tooling.',
+    bio: 'Hamza founded Brixven to bring world-class software delivery to Scottish businesses. He leads every engagement personally, backed by a curated network of specialist engineers and the latest AI tooling.',
     photo: '/team/hamza.jpg',
     initials: 'MH',
     linkedin: 'https://www.linkedin.com/company/brixven/',
@@ -297,16 +297,16 @@ export const CUSTOM_PACKAGE_MESSAGE = "Hi Brixven 👋 I'd like a *custom packag
 // ─── FAQs ───────────────────────────────────────────────────────────────────
 export const FAQS = [
   {
-    question: 'Do you build AI voice agents for UK and Ireland businesses?',
-    answer: 'Yes — we design, build and deploy AI voice agents (powered by Vapi) that answer inbound calls, qualify leads and book appointments around the clock. They\'re tailored to your business, integrate with your existing tools, and are popular with trades, clinics and service businesses across the UK and Ireland.',
+    question: 'Do you build AI voice agents for Scottish businesses?',
+    answer: 'Yes — we design, build and deploy AI voice agents (powered by Vapi) that answer inbound calls, qualify leads and book appointments around the clock. They\'re tailored to your business, integrate with your existing tools, and are popular with trades, clinics and service businesses across Scotland.',
   },
   {
     question: 'How quickly can you build and launch our project?',
     answer: 'Most web and mobile projects launch within 14 days of kickoff, thanks to our AI-accelerated workflow and senior-only team. AI voice agent and automation builds are often live within a few days. We\'ll confirm an exact timeline once we understand your scope.',
   },
   {
-    question: 'Which areas of the UK and Ireland do you serve?',
-    answer: 'We work with businesses across the UK and Ireland — including London, Manchester, Birmingham, Dublin and Cork — as well as remote clients throughout Europe. All work is delivered remotely with regular check-ins, so location is never a barrier.',
+    question: 'Which areas of Scotland do you serve?',
+    answer: 'We work with businesses across Scotland — including Edinburgh, Glasgow, Aberdeen and Dundee — as well as remote clients throughout the UK. All work is delivered remotely with regular check-ins, so location is never a barrier.',
   },
   {
     question: 'Can you automate our business processes with AI and tools like n8n?',

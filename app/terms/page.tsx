@@ -19,14 +19,14 @@ export default function TermsPage() {
       />
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <Link href="/" className="text-emerald-500 text-sm hover:text-emerald-400 transition-colors">
+          <Link href="/" className="text-gold text-sm hover:text-cream transition-colors">
             ← Back to home
           </Link>
         </div>
 
         <h1
           className="text-4xl sm:text-5xl font-bold text-white mb-4"
-          style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+          style={{ fontFamily: 'var(--font-playfair), "Playfair Display", Georgia, serif' }}
         >
           Terms of Service
         </h1>
@@ -73,8 +73,8 @@ export default function TermsPage() {
           <section>
             <h2 className="text-white text-xl font-semibold mb-3">5. Governing Law</h2>
             <p>
-              These terms are governed by the laws of England and Wales for UK clients, and by
-              Irish law for clients based in Ireland or the Republic of Ireland.
+              These terms are governed by the laws of Scotland for clients based in Scotland,
+              and by the laws of England and Wales for clients based elsewhere in the UK.
             </p>
           </section>
 
@@ -82,7 +82,7 @@ export default function TermsPage() {
             <h2 className="text-white text-xl font-semibold mb-3">6. Contact</h2>
             <p>
               Questions about these terms? Contact us at{' '}
-              <a href="mailto:info@brixven.com" className="text-emerald-500 hover:text-emerald-400">
+              <a href="mailto:info@brixven.com" className="text-gold hover:text-cream">
                 info@brixven.com
               </a>.
             </p>

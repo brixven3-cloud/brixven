@@ -9,9 +9,9 @@ import ArchLineart from './ArchLineart'
 import { usePrefersReducedMotion } from './motion'
 import { WHATSAPP_DISPLAY } from '@/lib/whatsapp'
 
-// Unsplash — Westminster / Houses of Parliament. Greyscale via CSS.
+// Unsplash — Edinburgh Castle at sunset.
 const BG_URL =
-  'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=75&auto=format'
+  'https://images.unsplash.com/photo-1586800093505-aef8a0642b08?w=1600&q=75&auto=format'
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null)
@@ -36,28 +36,29 @@ export default function HeroSection() {
       className="relative min-h-screen bg-parchment overflow-hidden flex flex-col"
       style={{ paddingTop: '64px' }} /* navbar height */
     >
-      {/* ── Atmospheric building background ── */}
+      {/* ── Cinematic Edinburgh Castle background ── */}
       <motion.div
-        className="absolute inset-0 building-bg pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{ y: bgY, scale: bgScale }}
       >
         <Image
           src={BG_URL}
-          alt=""
+          alt="Edinburgh Castle at golden hour"
           fill
           priority
           sizes="100vw"
           className="object-cover object-center"
-          style={{
-            filter: 'grayscale(1)',
-            mixBlendMode: 'multiply',
-            opacity: 0.16,
-          }}
+          style={{ opacity: 0.85 }}
         />
-        {/* Heavy overlay to keep it atmospheric */}
+        {/* Cinematic navy scrim */}
+        <div className="absolute inset-0 cinematic-overlay" />
+        {/* Vignette */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(135deg, #EDEAE6 30%, rgba(237,234,230,0.7) 100%)' }}
+          style={{
+            background:
+              'radial-gradient(ellipse at center, transparent 0%, rgba(10,22,40,0.55) 100%)',
+          }}
         />
       </motion.div>
 
@@ -90,7 +91,7 @@ export default function HeroSection() {
                 className="text-ink-muted text-xs leading-relaxed"
                 style={{ letterSpacing: '0.01em', maxWidth: 160 }}
               >
-                Founder-led. AI-native. Built for the pace of UK & Ireland business.
+                Founder-led. AI-native. Built for the pace of Scottish business.
               </p>
               <div className="mt-5 w-6 h-px bg-red" />
             </motion.div>
@@ -119,7 +120,7 @@ export default function HeroSection() {
                 <br />
                 <span className="relative inline-block">
                   AI,
-                  {/* Red underline accent */}
+                  {/* Gold underline accent */}
                   <span
                     className="absolute bottom-1 left-0 right-0 h-[5px] bg-red"
                     style={{ zIndex: -1 }}
@@ -127,7 +128,7 @@ export default function HeroSection() {
                 </span>{' '}
                 built for
                 <br />
-                UK &amp; Ireland.
+                Scotland.
               </motion.h1>
 
               {/* Sub-copy */}
@@ -138,7 +139,7 @@ export default function HeroSection() {
                 className="mt-8 text-ink-muted text-base lg:text-lg leading-relaxed max-w-lg mx-auto"
               >
                 Web &amp; e-commerce development, AI voice agents, business automation,
-                and paid ads — one lean senior team, full end-to-end ownership.
+                and paid ads — one lean senior team serving Scotland, full end-to-end ownership.
               </motion.p>
 
               {/* CTAs */}
@@ -173,7 +174,7 @@ export default function HeroSection() {
               className="hidden lg:flex flex-col gap-6 items-end text-right"
             >
               {[
-                { label: 'BASED', value: 'UK / IRE' },
+                { label: 'BASED', value: 'SCOTLAND' },
                 { label: 'STACK', value: 'WEB · AI · ADS' },
                 { label: 'EST', value: '2025' },
               ].map(({ label, value }) => (

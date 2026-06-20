@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { WHATSAPP_DISPLAY } from '@/lib/whatsapp'
+import Logo from './Logo'
 
 const NAV = [
   { label: 'Services',  href: '/#services' },
@@ -38,12 +39,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Wordmark */}
-          <Link
-            href="/"
-            className="font-display font-black text-ink text-xl tracking-tight hover:text-red transition-colors duration-200"
-          >
-            Brixven
-          </Link>
+          <Logo iconSize={32} textClass="text-lg" />
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-0">
